@@ -1,7 +1,7 @@
 import BaseLayout from '@/app/layouts/BaseLayout'
 import { QuestionDetailsPage } from '@/pages/question-details'
 import { QuestionsPage } from '@/pages/questions-list'
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 export const appRouter = createBrowserRouter([
 	{
@@ -10,7 +10,15 @@ export const appRouter = createBrowserRouter([
 		children: [
 			{ path: 'questions', element: <QuestionsPage /> },
 			{ path: 'questions/:id', element: <QuestionDetailsPage /> },
-			{ path: '', element: <QuestionsPage /> }
+			{
+				path: '',
+				element: (
+					<Navigate
+						to="/questions"
+						replace
+					/>
+				)
+			}
 		]
 	}
 ])
