@@ -1,12 +1,22 @@
-import { appRouter } from '@/app/providers/router'
-import { store } from '@/app/store'
-import { Provider as ReduxProvider } from 'react-redux'
-import { RouterProvider } from 'react-router-dom'
+// App.tsx
 
-export const App = () => (
-	<ReduxProvider store={store}>
-		<RouterProvider router={appRouter} />
-	</ReduxProvider>
-)
+import { RouterProvider } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { store } from '@/app/store'
+import { appRouter } from '@/app/router'
+import { ErrorBoundary } from '@/app/providers/ErrorBoundary'
+
+/**
+ * Корневой компонент приложения
+ */
+function App() {
+  return (
+    <ErrorBoundary>
+      <Provider store={store}>
+        <RouterProvider router={appRouter} />
+      </Provider>
+    </ErrorBoundary>
+  )
+}
 
 export default App
