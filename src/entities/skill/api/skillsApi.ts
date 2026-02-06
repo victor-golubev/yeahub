@@ -9,8 +9,14 @@ export type Skill = {
 
 export const skillsApi = baseApi.injectEndpoints({
 	endpoints: builder => ({
-		getSkills: builder.query<Skill[], void>({
-			query: () => '/skills',
+		getSkills: builder.query<
+			Skill[],
+			{ limit?: number; specializations?: string }
+		>({
+			query: ({ limit, specializations }) => ({
+				url: '/skills',
+				params: { limit, specializations }
+			}),
 			transformResponse: (response: { data: Skill[] }) => response.data,
 			providesTags: ['Skills']
 		})
