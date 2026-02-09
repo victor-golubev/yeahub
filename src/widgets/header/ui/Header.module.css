@@ -1,0 +1,39 @@
+.header {
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	width: 1216px;
+	background-color: #fff;
+	padding: 8px 0;
+}
+
+.left {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 42px;
+}
+
+.nav {
+	display: flex;
+	gap: 6px;
+}
+
+.navLink {
+	align-items: center;
+	border-radius: 12px;
+	display: flex;
+	min-height: 38px;
+	padding: 6px 10px;
+	transition: background-color 0.2s ease;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.navLink:hover {
+	background-color: #f8f8f8;
+}
