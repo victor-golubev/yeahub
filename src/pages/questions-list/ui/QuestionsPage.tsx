@@ -51,13 +51,6 @@ export const QuestionsPage = () => {
 				<div className="questions-page__error">
 					<h2>Ошибка загрузки</h2>
 					<p>Не удалось загрузить список вопросов. Попробуйте позже.</p>
-					{/* В dev режиме можно показать детали ошибки */}
-					{process.env.NODE_ENV === 'development' && (
-						<details>
-							<summary>Детали ошибки</summary>
-							<pre>{JSON.stringify(error, null, 2)}</pre>
-						</details>
-					)}
 				</div>
 			</div>
 		)
@@ -139,10 +132,10 @@ export const QuestionsPage = () => {
 							onClick={() =>
 								updateFilters({
 									search: undefined,
-									specializationId: undefined,
+									specialization: undefined,
 									complexity: undefined,
 									rate: undefined,
-									skillIds: undefined,
+									skills: undefined,
 									keywords: undefined,
 									page: 1
 								})
