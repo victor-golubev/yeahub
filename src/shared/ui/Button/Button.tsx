@@ -1,11 +1,14 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react'
+// shared/ui/Button/Button.tsx
+import type { ButtonHTMLAttributes, ElementType, ReactNode } from 'react'
 import styles from './Button.module.css'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode
 	variant?: 'primary' | 'secondary' | 'ghost'
-	size: 'sm' | 'md' | 'lg'
+	size?: 'sm' | 'md' | 'lg'
 	fullWidth?: boolean
+	as?: ElementType
+	to?: string
 }
 
 export const Button = ({
@@ -14,7 +17,7 @@ export const Button = ({
 	size = 'md',
 	fullWidth = false,
 	className = '',
-	disabled,
+	as: Component = 'button',
 	type = 'button',
 	...props
 }: ButtonProps) => {
@@ -29,13 +32,12 @@ export const Button = ({
 		.join(' ')
 
 	return (
-		<button
-			type={type}
+		<Component
+			type={Component === 'button' ? type : undefined}
 			className={classes}
-			disabled={disabled}
 			{...props}
 		>
 			{children}
-		</button>
+		</Component>
 	)
 }

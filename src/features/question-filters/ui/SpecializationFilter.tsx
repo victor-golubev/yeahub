@@ -1,4 +1,6 @@
 import { useGetSpecializationsQuery } from '@/entities/specialization'
+import { FilterSection } from '@/features/question-filters/ui/FilterSection/FilterSection'
+import { Chip } from '@/shared/ui/Chip/Chip'
 
 interface SpecializationFilterProps {
 	value?: string
@@ -15,29 +17,19 @@ export const SpecializationFilter = ({
 	if (!specializations?.data.length) return null
 
 	return (
-		<div>
-			<h3>Специализация</h3>
-			<div
-				role="group"
-				aria-label="Фильтр по специализации"
-			>
-				{specializations?.data.map(spec => {
-					const selected = String(spec.id) === value
-
-					return (
-						<button
-							key={spec.id}
-							type="button"
-							onClick={() => onChange(selected ? undefined : String(spec.id))}
-							style={selected ? { background: 'red' } : {}}
-							aria-pressed={selected}
-							aria-label={spec.title}
-						>
-							{spec.title}
-						</button>
-					)
-				})}
-			</div>
-		</div>
+		<FilterSection title="Специализация">
+			{specializations.data.map(spec => {
+				const selected = String(spec.id) === value
+				return (
+					<Chip
+						key={spec.id}
+						onClick={() => onChange(selected ? undefined : String(spec.id))}
+						selected={selected}
+					>
+						{spec.title}
+					</Chip>
+				)
+			})}
+		</FilterSection>
 	)
 }

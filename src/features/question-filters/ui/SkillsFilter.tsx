@@ -1,4 +1,6 @@
 import { useGetSkillsQuery } from '@/entities/skill/api/skillsApi'
+import { FilterSection } from '@/features/question-filters/ui/FilterSection/FilterSection'
+import { Chip } from '@/shared/ui/Chip/Chip'
 
 interface SkillsFilterProps {
 	value?: number[]
@@ -28,29 +30,20 @@ export const SkillsFilter = ({
 	if (!skills?.length) return null
 
 	return (
-		<div>
-			<h3>Выберите навыки</h3>
+		<FilterSection title="Выберите навыки">
+			{skills?.map(skill => {
+				const selected = value.includes(skill.id)
 
-			<div
-				role="group"
-				aria-label="Фильтр по навыкам"
-			>
-				{skills?.map(skill => {
-					const selected = value.includes(skill.id)
-
-					return (
-						<button
-							key={skill.id}
-							type="button"
-							aria-pressed={selected}
-							onClick={() => handleToggle(skill.id)}
-							style={selected ? { background: 'red' } : {}}
-						>
-							{skill.title}
-						</button>
-					)
-				})}
-			</div>
-		</div>
+				return (
+					<Chip
+						key={skill.id}
+						onClick={() => handleToggle(skill.id)}
+						selected={selected}
+					>
+						{skill.title}
+					</Chip>
+				)
+			})}
+		</FilterSection>
 	)
 }

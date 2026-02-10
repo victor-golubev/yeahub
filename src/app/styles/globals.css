@@ -1,0 +1,10 @@
+body {
+	font-family: 'Manrope', sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	background-color: var(--background-app);
+}
+
+main {
+	padding: 40px 0;
+}

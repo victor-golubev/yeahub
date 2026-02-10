@@ -1,4 +1,6 @@
-import logoImg from '@/shared/assets/images/logo.png'
+import logoIcon from '@/shared/assets/images/logo-icon.png'
+import logoText from '@/shared/assets/images/logo-text.svg'
+import { Button } from '@/shared/ui/Button'
 import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
 
@@ -12,8 +14,12 @@ export const Header = () => (
 					aria-label="На главную"
 				>
 					<img
-						src={logoImg}
-						alt="YeaHub логотип"
+						src={logoIcon}
+						alt="Логотип"
+					/>
+					<img
+						src={logoText}
+						alt="YeaHub"
 					/>
 				</Link>
 				<nav
@@ -43,16 +49,18 @@ export const Header = () => (
 			<div className={styles.right}>
 				<Link
 					to="/login"
-					className={styles.enter}
+					className={styles.loginLink}
 				>
 					Вход
 				</Link>
-				<Link
+				<Button
+					as={Link}
 					to="/register"
-					className={styles.registration}
+					variant="primary"
+					className={styles.registerLink}
 				>
 					Регистрация
-				</Link>
+				</Button>
 			</div>
 		</div>
 	</header>

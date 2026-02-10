@@ -4,15 +4,20 @@
 	cursor: pointer;
 	font-weight: 500;
 	transition: all 0.2s;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	-ms-border-radius: 12px;
+	-o-border-radius: 12px;
 }
 
 .button--primary {
-	background: #7125eb;
+	background: var(--btn-bg);
 	color: white;
 }
 
 .button--primary:hover:not(:disabled) {
-	background: #5f1ec9;
+	background: var(--btn-bg-hover);
 }
 
 .button--secondary {

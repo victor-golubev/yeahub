@@ -1,13 +1,13 @@
 .header {
 	display: flex;
 	justify-content: center;
+	background-color: #fff;
 }
 
 .container {
 	display: flex;
 	justify-content: space-between;
 	width: 1216px;
-	background-color: #fff;
 	padding: 8px 0;
 }
 
@@ -16,6 +16,12 @@
 	justify-content: space-between;
 	align-items: center;
 	gap: 42px;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 10px;
 }
 
 .nav {
@@ -29,11 +35,41 @@
 	display: flex;
 	min-height: 38px;
 	padding: 6px 10px;
-	transition: background-color 0.2s ease;
+	transition: all 0.2s ease;
 	white-space: nowrap;
 	width: 100%;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
 }
 
 .navLink:hover {
 	background-color: #f8f8f8;
+}
+
+.navLink:hover {
+	color: var(--btn-bg-hover);
+}
+
+.right {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.loginLink {
+	color: var(--btn-bg);
+}
+
+.loginLink:hover {
+	color: var(--btn-bg-hover);
+}
+
+.registerLink {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 170px;
+	height: 48px;
 }

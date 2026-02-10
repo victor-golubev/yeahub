@@ -1,4 +1,6 @@
+import { FilterSection } from '@/features/question-filters/ui/FilterSection/FilterSection'
 import { COMPLEXITY_RANGES } from '@/shared/constants/complexity'
+import { Chip } from '@/shared/ui/Chip/Chip'
 
 interface ComplexityFilterProps {
 	value?: number[]
@@ -18,28 +20,19 @@ export const ComplexityFilter = ({
 	}
 
 	return (
-		<div>
-			<h3>Сложность вопросов</h3>
-			<div
-				role="group"
-				aria-label="Фильтр по сложности"
-			>
-				{COMPLEXITY_RANGES.map(complexity => {
-					const selected = complexity.values.some(c => value.includes(c))
-					return (
-						<button
-							key={complexity.label}
-							type="button"
-							onClick={() => handleClick(complexity.values)}
-							style={selected ? { background: 'red' } : {}}
-							aria-pressed={selected}
-							aria-label={complexity.label}
-						>
-							{complexity.label}
-						</button>
-					)
-				})}
-			</div>
-		</div>
+		<FilterSection title="Сложность вопросов">
+			{COMPLEXITY_RANGES.map(complexity => {
+				const selected = complexity.values.some(c => value.includes(c))
+				return (
+					<Chip
+						key={complexity.label}
+						onClick={() => handleClick(complexity.values)}
+						selected={selected}
+					>
+						{complexity.label}
+					</Chip>
+				)
+			})}
+		</FilterSection>
 	)
 }

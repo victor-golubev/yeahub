@@ -1,4 +1,6 @@
+import { FilterSection } from '@/features/question-filters/ui/FilterSection/FilterSection'
 import { RATE_VALUES } from '@/shared/constants/rate'
+import { Chip } from '@/shared/ui/Chip/Chip'
 
 interface RateFilterProps {
 	value?: number[]
@@ -17,30 +19,20 @@ export const RateFilter = ({ value = [], onChange }: RateFilterProps) => {
 	}
 
 	return (
-		<div>
-			<h3>Рейтинг вопроса</h3>
+		<FilterSection title="Рейтинг вопроса">
+			{RATE_VALUES.map(rate => {
+				const selected = isSelected(rate)
 
-			<div
-				role="group"
-				aria-label="Фильтр по рейтингу"
-			>
-				{RATE_VALUES.map(rate => {
-					const selected = isSelected(rate)
-
-					return (
-						<button
-							key={rate}
-							type="button"
-							onClick={() => handleToggle(rate)}
-							style={selected ? { background: 'red' } : {}}
-							aria-pressed={selected}
-							aria-label={`Рейтинг ${rate}`}
-						>
-							{rate}
-						</button>
-					)
-				})}
-			</div>
-		</div>
+				return (
+					<Chip
+						key={rate}
+						onClick={() => handleToggle(rate)}
+						selected={selected}
+					>
+						{rate}
+					</Chip>
+				)
+			})}
+		</FilterSection>
 	)
 }

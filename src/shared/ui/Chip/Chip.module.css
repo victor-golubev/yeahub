@@ -1,0 +1,33 @@
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.625rem 1rem;
+	border-radius: 12px;
+	font-size: 1rem;
+	font-weight: 500;
+	transition: all 0.2s;
+	cursor: pointer;
+}
+
+.chip--outlined {
+	border: 1px solid #d1d5db;
+	background: white;
+	color: #1f2937;
+}
+
+.chip--outlined:hover {
+	color: #fff;
+	background-color: var(--main-color);
+	border-color: var(--main-color);
+}
+
+.chip--selected {
+	border-color: #7125eb !important;
+	color: #7125eb !important;
+}
+
+.icon {
+	width: 20px;
+	height: 20px;
+}

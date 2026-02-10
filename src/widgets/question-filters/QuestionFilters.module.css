@@ -1,0 +1,7 @@
+.layout {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-width: 372px;
+	min-width: 372px;
+}
