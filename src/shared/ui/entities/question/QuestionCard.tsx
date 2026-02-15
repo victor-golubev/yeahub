@@ -1,20 +1,12 @@
-// entities/question/ui/QuestionCard.tsx
-
 import accordeon from '@/shared/assets/images/accordeon.svg'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import type { QuestionPreview } from '../model/types'
+import type { QuestionPreview } from '../../../../entities/question/model/types'
 import styles from './QuestionCard.module.css'
 interface QuestionCardProps {
 	question: QuestionPreview
 }
 
-/**
- * Карточка вопроса для списка
- *
- * @example
- * <QuestionCard question={question} />
- */
 export const QuestionCard = ({ question }: QuestionCardProps) => {
 	const { id, title, complexity, rate } = question
 	const [isOpen, setIsOpen] = useState(false)

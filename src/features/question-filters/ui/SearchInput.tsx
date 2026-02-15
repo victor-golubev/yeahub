@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import searchIcon from '@/shared/assets/images/search-icon.svg'
+import { useEffect, useRef, useState } from 'react'
 import styles from './SearchInput.module.css'
 
 interface SearchInputProps {
@@ -8,15 +9,6 @@ interface SearchInputProps {
 	debounceMs?: number
 }
 
-/**
- * Поле поиска с debounce
- *
- * @example
- * <SearchInput
- *   value={filters.search}
- *   onSearch={(value) => updateFilters({ search: value })}
- * />
- */
 export const SearchInput = ({
 	value = '',
 	onSearch,
@@ -24,13 +16,15 @@ export const SearchInput = ({
 	debounceMs = 500
 }: SearchInputProps) => {
 	const [localValue, setLocalValue] = useState(value)
+	const inputRef = useRef<HTMLInputElement>(null)
 
-	// Синхронизация с внешним значением
+	const handleWrapperClick = () => {
+		inputRef.current?.focus()
+	}
 	useEffect(() => {
 		setLocalValue(value)
 	}, [value])
 
-	// Debounce для поиска
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			if (localValue !== value) {
@@ -42,13 +36,23 @@ export const SearchInput = ({
 	}, [localValue, value, onSearch, debounceMs])
 
 	return (
-		<div className={styles.search}>
+		<div
+			className={styles.search}
+			role="button"
+			tabIndex={0}
+			onClick={handleWrapperClick}
+		>
+			<img
+				src={searchIcon}
+				alt="Search"
+			/>
 			<input
 				type="text"
 				value={localValue}
 				onChange={e => setLocalValue(e.target.value)}
 				placeholder={placeholder}
 				className={styles.input}
+				ref={inputRef}
 			/>
 			{localValue && (
 				<button

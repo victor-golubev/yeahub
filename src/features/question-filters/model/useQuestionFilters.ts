@@ -1,5 +1,3 @@
-// features/question-filters/model/useQuestionFilters.ts
-
 import type { GetQuestionsParams } from '@/entities/question'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -9,9 +7,6 @@ const DEFAULT_FILTERS = {
 	specialization: '11'
 }
 
-/**
- * Интерфейс для работы с фильтрами вопросов через URL query params
- */
 export interface QuestionFilters {
 	page: number
 	search?: string
@@ -22,21 +17,9 @@ export interface QuestionFilters {
 	keywords?: string
 }
 
-/**
- * Хук для управления фильтрами вопросов
- *
- * Инкапсулирует всю логику работы с searchParams:
- * - Чтение текущих фильтров из URL
- * - Обновление фильтров с сохранением в URL
- * - Преобразование в формат для API
- *
- * @example
- * const { filters, apiParams, updateFilters, resetFilters } = useQuestionFilters()
- */
 export const useQuestionFilters = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 
-	// Парсинг текущих фильтров из URL
 	const filters = useMemo<QuestionFilters>(() => {
 		return {
 			page: Number(searchParams.get('page')) || 1,
@@ -65,34 +48,29 @@ export const useQuestionFilters = () => {
 		}
 	}, [searchParams])
 
-	// Преобразование фильтров в формат для API
 	const apiParams = useMemo<GetQuestionsParams>(() => {
 		return {
 			page: filters.page,
 			limit: 10,
 			title: filters.search,
 			specialization: filters.specialization,
-			complexity: filters.complexity?.join(','),
-			rate: filters.rate?.join(','),
+			complexity:
+				filters.complexity?.filter(c => c >= 1 && c <= 10).join(',') ||
+				undefined,
+			rate: filters.rate?.filter(r => r >= 1 && r <= 5).join(',') || undefined,
 			skills: filters.skills?.join(','),
 			keywords: filters.keywords
 		}
 	}, [filters])
 
-	/**
-	 * Обновить фильтры
-	 * При изменении любого фильтра сбрасываем страницу на 1
-	 */
 	const updateFilters = useCallback(
 		(updates: Partial<QuestionFilters>) => {
 			const newParams = new URLSearchParams(searchParams)
 
-			// Сброс страницы при изменении фильтров (кроме page)
 			if (Object.keys(updates).some(key => key !== 'page')) {
 				newParams.set('page', '1')
 			}
 
-			// Применяем обновления
 			Object.entries(updates).forEach(([key, value]) => {
 				if (value === undefined || value === null || value === '') {
 					newParams.delete(key)
@@ -112,9 +90,6 @@ export const useQuestionFilters = () => {
 		[searchParams, setSearchParams]
 	)
 
-	/**
-	 * Сбросить все фильтры
-	 */
 	const resetFilters = useCallback(() => {
 		setSearchParams({})
 	}, [setSearchParams])

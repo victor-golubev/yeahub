@@ -1,0 +1,19 @@
+.layout {
+	display: flex;
+	gap: 20px;
+	align-items: start;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	flex: 1;
+}
+
+.title {
+	margin-bottom: 15px;
+	font-size: 1.5rem;
+	line-height: 1.2;
+	font-weight: 500;
+}

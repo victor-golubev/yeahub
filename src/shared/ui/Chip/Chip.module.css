@@ -2,7 +2,7 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
-	padding: 0.625rem 1rem;
+	padding: 0.5rem 0.8rem;
 	border-radius: 12px;
 	font-size: 1rem;
 	font-weight: 500;
@@ -25,6 +25,10 @@
 .chip--selected {
 	border-color: #7125eb !important;
 	color: #7125eb !important;
+}
+
+.chip--selected:hover {
+	color: #ffffff !important;
 }
 
 .icon {

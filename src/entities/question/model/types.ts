@@ -1,43 +1,24 @@
-// entities/question/model/types.ts
+export type ComplexityLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+export type Rate = 1 | 2 | 3 | 4 | 5
 
-/**
- * Уровни сложности вопроса
- */
-export const COMPLEXITY = {
-	EASY: 1,
-	MEDIUM: 2,
-	HARD: 3
-} as const
-
-export type ComplexityLevel = (typeof COMPLEXITY)[keyof typeof COMPLEXITY]
-
-/**
- * Специализация
- */
 export interface Specialization {
 	id: number
 	title: string
 	description: string
 }
 
-/**
- * Навык
- */
 export interface Skill {
 	id: number
 	title: string
 	imageSrc?: string
 }
 
-/**
- * Вопрос (полная модель)
- */
 export interface Question {
 	id: number
 	title: string
 	description?: string
 	complexity: ComplexityLevel
-	rate: number
+	rate: Rate
 	shortAnswer: string
 	longAnswer: string
 	keywords: string[]
@@ -47,35 +28,26 @@ export interface Question {
 	updatedAt: string
 }
 
-/**
- * Вопрос для карточки (упрощенная модель для списка)
- */
 export interface QuestionPreview {
 	id: number
 	title: string
 	complexity: ComplexityLevel
-	rate: number
+	rate: Rate
 	questionSpecializations: Specialization[]
 	shortAnswer: string
 }
 
-/**
- * Параметры запроса списка вопросов
- */
 export interface GetQuestionsParams {
 	page?: number
 	limit?: number
-	title?: string // поиск по названию
+	title?: string
 	specialization?: string
-	complexity?: string // "1,2,3"
-	rate?: string // "1,2,3,4,5"
-	skills?: string // "1,2,3"
+	complexity?: string
+	rate?: string
+	skills?: string
 	keywords?: string
 }
 
-/**
- * Ответ API со списком вопросов
- */
 export interface GetQuestionsResponse {
 	data: Question[]
 	total: number

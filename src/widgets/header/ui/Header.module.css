@@ -4,10 +4,10 @@
 	background-color: #fff;
 }
 
-.container {
+.inner {
 	display: flex;
 	justify-content: space-between;
-	width: 1216px;
+	width: 100%;
 	padding: 8px 0;
 }
 

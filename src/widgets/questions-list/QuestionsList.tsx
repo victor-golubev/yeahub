@@ -1,49 +1,33 @@
-import { QuestionCard, type Question } from '@/entities/question'
-import { Pagination } from '@/shared/ui/Pagination'
+import type { Question } from '@/entities/question'
+import { NoResults } from '@/features/question-filters/ui/NoResults'
+import { QuestionCard } from '@/shared/ui/entities/question/QuestionCard'
 import styles from './QuestionsList.module.css'
 
 // widgets/questions-list/ui/QuestionsList.tsx
 interface QuestionsListProps {
 	questions: Question[]
-	total: number
-	currentPage: number
-	onPageChange: (page: number) => void
+	onResetFilters: () => void
 }
 
 export const QuestionsList = ({
 	questions,
-	total,
-	currentPage,
-	onPageChange
+	onResetFilters
 }: QuestionsListProps) => {
-	const totalPages = Math.ceil(total / 10)
-
 	return (
-		<div className={styles.list}>
+		<div className={styles.layout}>
 			<div className={styles.header}>
 				<h1 className={styles.title}>Вопросы</h1>
 			</div>
-
-			{questions.length > 0 ? (
-				<>
-					{questions.map(question => (
-						<QuestionCard
-							key={question.id}
-							question={question}
-						/>
-					))}
-
-					<Pagination
-						currentPage={currentPage}
-						totalPages={totalPages}
-						onPageChange={onPageChange}
+			<div className={styles.list}>
+				{questions.map(question => (
+					<QuestionCard
+						key={question.id}
+						question={question}
 					/>
-				</>
-			) : (
-				<div className="questions-page__empty">
-					<p>По вашему запросу ничего не найдено</p>
-				</div>
-			)}
+				))}
+			</div>
+
+			{questions.length === 0 && <NoResults onResetFilters={onResetFilters} />}
 		</div>
 	)
 }

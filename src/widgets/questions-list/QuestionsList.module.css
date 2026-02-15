@@ -1,7 +1,8 @@
-.questions__wrapper {
+.layout {
 	width: 100%;
 }
 .header {
+	margin-bottom: 25px;
 	padding-bottom: 17px;
 	border-bottom: 0.5px solid #e8e8e8;
 }
@@ -18,5 +19,4 @@
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	padding-top: 24px;
 }

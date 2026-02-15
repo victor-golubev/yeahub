@@ -1,6 +1,13 @@
-import { useGetSpecializationsQuery } from '@/entities/specialization'
-import { FilterSection } from '@/features/question-filters/ui/FilterSection/FilterSection'
+import {
+	useGetSpecializationsQuery,
+	type Specialization
+} from '@/entities/specialization'
 import { Chip } from '@/shared/ui/Chip/Chip'
+import { FilterSection } from '@/shared/ui/FilterSection/FilterSection'
+import { FilterToggle } from '@/shared/ui/FilterToggle/FilterToggle'
+import { useState } from 'react'
+
+const VISIBLE_COUNT = 5
 
 interface SpecializationFilterProps {
 	value?: string
@@ -11,14 +18,32 @@ export const SpecializationFilter = ({
 	value,
 	onChange
 }: SpecializationFilterProps) => {
-	const { data: specializations, isLoading } = useGetSpecializationsQuery()
+	const { data: response, isLoading } = useGetSpecializationsQuery()
+
+	const specializations = response?.data || []
+
+	const [expanded, setExpanded] = useState(false)
+
+	const visibleSpecializations = expanded
+		? specializations
+		: specializations?.slice(0, VISIBLE_COUNT)
 
 	if (isLoading) return <div>Загрузка...</div>
-	if (!specializations?.data.length) return null
+	if (!specializations.length) return null
 
 	return (
-		<FilterSection title="Специализация">
-			{specializations.data.map(spec => {
+		<FilterSection
+			title="Специализация"
+			footer={
+				specializations.length > VISIBLE_COUNT && (
+					<FilterToggle
+						expanded={expanded}
+						onToggle={() => setExpanded(prev => !prev)}
+					/>
+				)
+			}
+		>
+			{visibleSpecializations.map((spec: Specialization) => {
 				const selected = String(spec.id) === value
 				return (
 					<Chip

@@ -1,78 +1,93 @@
-// pages/questions-list/ui/QuestionsPage.tsx
-
 import { useGetQuestionsQuery } from '@/entities/question'
+import { useGetSkillsQuery } from '@/entities/skill'
+import { useGetSpecializationsQuery } from '@/entities/specialization'
 import { useQuestionFilters } from '@/features/question-filters'
 import { Container } from '@/shared/ui/Container/Container'
+import { Pagination } from '@/shared/ui/Pagination'
 import { Surface } from '@/shared/ui/Surface/Surface'
+import { PageError } from '@/shared/ui/errors/PageError'
 import { QuestionFilters } from '@/widgets/question-filters/QuestionFilters'
+import { QuestionFiltersSkeleton } from '@/widgets/question-filters/QuestionFiltersSkeleton'
 import { QuestionsList } from '@/widgets/questions-list/QuestionsList'
+import { QuestionsListSkeleton } from '@/widgets/questions-list/QuestionsListSkeleton'
 import styles from './QuestionsPage.module.css'
-/**
- * Страница списка вопросов
- *
- * Основная функциональность:
- * - Отображение списка вопросов
- * - Фильтрация и поиск
- * - Пагинация
- */
+
 export const QuestionsPage = () => {
-	// Получаем фильтры и методы работы с ними
-	const { filters, apiParams, updateFilters } = useQuestionFilters()
+	const { filters, apiParams, updateFilters, resetFilters } =
+		useQuestionFilters()
 
-	// Запрос данных с текущими фильтрами
-	const { data, isLoading, isFetching, isError, error } =
-		useGetQuestionsQuery(apiParams)
+	const {
+		data: questionsData,
+		isLoading: isQuestionsLoading,
+		isFetching,
+		isError,
+		error,
+		refetch
+	} = useGetQuestionsQuery(apiParams)
 
-	// Обработка пагинации
+	const { data: specializationsData, isLoading: isSpecializationsLoading } =
+		useGetSpecializationsQuery()
+
 	const handlePageChange = (page: number) => {
 		updateFilters({ page })
 	}
 
-	// Состояния загрузки
-	if (isLoading) {
-		return (
-			<div className="questions-page">
-				<div className="questions-page__loading">
-					{/* TODO: Добавить скелетон-загрузчик */}
-					<p>Загрузка вопросов...</p>
-				</div>
-			</div>
-		)
-	}
+	const { data: skills, isLoading: isSkillsLoading } = useGetSkillsQuery(
+		{ specializations: filters.specialization },
+		{ skip: !filters.specialization }
+	)
 
-	// Обработка ошибок
-	if (isError) {
-		return (
-			<div className="questions-page">
-				<div className="questions-page__error">
-					<h2>Ошибка загрузки</h2>
-					<p>Не удалось загрузить список вопросов. Попробуйте позже.</p>
-				</div>
-			</div>
-		)
-	}
+	const isFiltersLoading =
+		isSpecializationsLoading ||
+		(Boolean(filters.specialization) && isSkillsLoading)
 
-	const questions = data?.data ?? []
-	const totalPages = Math.ceil((data?.total ?? 0) / (apiParams.limit ?? 10))
+	const questions = questionsData?.data ?? []
+	const totalPages = Math.ceil(
+		(questionsData?.total ?? 0) / (apiParams.limit ?? 10)
+	)
 
 	return (
 		<Container>
 			<div className={styles.layout}>
-				<Surface as="main">
-					<QuestionsList
-						questions={questions}
-						total={totalPages}
-						currentPage={filters.page}
-						onPageChange={handlePageChange}
-					/>
-				</Surface>
+				<div className={styles.main}>
+					<Surface>
+						{isQuestionsLoading ? (
+							<QuestionsListSkeleton />
+						) : isError ? (
+							<PageError
+								message="Не удалось загрузить список вопросов"
+								onRetry={refetch}
+							/>
+						) : (
+							<>
+								<QuestionsList
+									questions={questions}
+									onResetFilters={resetFilters}
+								/>
+								{totalPages > 1 && (
+									<Pagination
+										currentPage={filters.page}
+										totalPages={totalPages}
+										onPageChange={handlePageChange}
+									/>
+								)}
+							</>
+						)}
+					</Surface>
+				</div>
 
-				<Surface as="aside">
-					<QuestionFilters
-						filters={filters}
-						onUpdate={updateFilters}
-					/>
-				</Surface>
+				<div className={styles.aside}>
+					<Surface>
+						{isFiltersLoading ? (
+							<QuestionFiltersSkeleton />
+						) : (
+							<QuestionFilters
+								filters={filters}
+								onUpdate={updateFilters}
+							/>
+						)}
+					</Surface>
+				</div>
 			</div>
 		</Container>
 	)

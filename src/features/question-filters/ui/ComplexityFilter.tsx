@@ -1,6 +1,6 @@
-import { FilterSection } from '@/features/question-filters/ui/FilterSection/FilterSection'
 import { COMPLEXITY_RANGES } from '@/shared/constants/complexity'
 import { Chip } from '@/shared/ui/Chip/Chip'
+import { FilterSection } from '@/shared/ui/FilterSection/FilterSection'
 
 interface ComplexityFilterProps {
 	value?: number[]

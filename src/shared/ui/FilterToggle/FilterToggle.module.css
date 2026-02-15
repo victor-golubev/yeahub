@@ -1,0 +1,8 @@
+.button {
+	font-size: 0.9rem;
+	color: var(--main-color);
+}
+
+.button:hover {
+	text-decoration: underline;
+}

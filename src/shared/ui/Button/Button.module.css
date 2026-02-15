@@ -11,6 +11,12 @@
 	-o-border-radius: 12px;
 }
 
+.button:hover {
+	color: #fff;
+	background-color: var(--main-color);
+	border-color: var(--main-color);
+}
+
 .button--primary {
 	background: var(--btn-bg);
 	color: white;

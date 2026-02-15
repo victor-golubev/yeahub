@@ -1,0 +1,21 @@
+.noResults {
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+}
+
+.noResults p + p {
+	margin-top: 8px;
+	font-size: 1rem;
+	font-weight: 300;
+}
+
+.image {
+	height: 186px;
+	object-fit: contain;
+	width: 186px;
+}
+
+.reset {
+	margin-top: 20px;
+}
