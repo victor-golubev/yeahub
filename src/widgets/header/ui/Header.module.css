@@ -1,75 +1,92 @@
 .header {
 	display: flex;
 	justify-content: center;
-	background-color: #fff;
+	background-color: var(--color-background);
+	box-shadow: var(--shadow-sm);
+	top: 0;
+	z-index: var(--z-index-sticky);
 }
 
 .inner {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-	padding: 8px 0;
+	max-width: var(--container-max-width, 1280px);
+	padding: var(--space-xs) 0;
 }
 
 .left {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	gap: 42px;
+	gap: var(--space-xl);
 }
 
 .logo {
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	gap: var(--space-sm);
+	text-decoration: none;
 }
 
 .nav {
 	display: flex;
-	gap: 6px;
+	gap: var(--space-md);
 }
 
 .navLink {
 	align-items: center;
-	border-radius: 12px;
+	border-radius: var(--radius-md);
 	display: flex;
-	min-height: 38px;
-	padding: 6px 10px;
-	transition: all 0.2s ease;
+	min-height: calc(var(--space-md) * 2.5);
+	padding: var(--space-xs) var(--space-sm);
+	transition:
+		background-color var(--transition-fast),
+		color var(--transition-fast),
+		text-decoration var(--transition-fast);
 	white-space: nowrap;
-	width: 100%;
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
+	color: var(--color-text);
+	text-decoration: none;
 }
 
-.navLink:hover {
-	background-color: #f8f8f8;
-}
-
-.navLink:hover {
-	color: var(--btn-bg-hover);
+.navLink:hover,
+.navLink.active {
+	background-color: var(--color-gray-100);
+	color: var(--color-primary);
+	text-decoration: none;
 }
 
 .right {
 	display: flex;
 	align-items: center;
-	gap: 20px;
+	gap: var(--space-lg);
 }
 
 .loginLink {
-	color: var(--btn-bg);
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: color var(--transition-normal);
 }
 
 .loginLink:hover {
-	color: var(--btn-bg-hover);
+	color: var(--color-primary-hover);
 }
 
 .registerLink {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 170px;
-	height: 48px;
+	width: 10rem;
+	height: 3rem;
+	padding: 0 --space-xl;
+	background-color: var(--color-primary);
+	color: var(--color-white);
+	border-radius: var(--radius-lg);
+	text-decoration: none;
+	font-weight: 500;
+	transition: background-color var(--transition-normal);
+	text-decoration: none;
+}
+
+.registerLink:hover {
+	background-color: var(--color-primary-hover);
 }

@@ -23,12 +23,16 @@ export const QuestionMeta = ({ complexity, rate, skills, keywords }: Props) => {
 					<p className={styles.title}>Уровень</p>
 					<ul className={styles.list}>
 						<li className={styles.item}>
-							<span>Сложность:</span>
-							<strong className={styles.value}>{complexity}</strong>
+							<div className={styles.complexity}>
+								<span>Сложность:</span>
+								<strong className={styles.value}>{complexity}</strong>
+							</div>
 						</li>
 						<li className={styles.item}>
-							<span>Рейтинг:</span>
-							<strong className={styles.value}>{rate}</strong>
+							<div className={styles.complexity}>
+								<span>Рейтинг:</span>
+								<strong className={styles.value}>{rate}</strong>
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -38,7 +42,10 @@ export const QuestionMeta = ({ complexity, rate, skills, keywords }: Props) => {
 						<p className={styles.title}>Навыки</p>
 						<ul className={styles.list}>
 							{skills.map(skill => (
-								<li key={skill.id}>
+								<li
+									key={skill.id}
+									className={styles.item}
+								>
 									<Link
 										to={`/questions?page=1&skills=${skill.id}`}
 										className={styles.skill}
@@ -62,11 +69,11 @@ export const QuestionMeta = ({ complexity, rate, skills, keywords }: Props) => {
 						<p className={styles.title}>Ключевые слова</p>
 						<ul className={styles.list}>
 							{keywords.map(keyword => (
-								<li
-									key={keyword}
-									className={styles.keyword}
-								>
-									<Link to={`/questions?page=1&keywords=${keyword}`}>
+								<li key={keyword}>
+									<Link
+										to={`/questions?page=1&keywords=${keyword}`}
+										className={styles.keyword}
+									>
 										#{keyword}
 									</Link>
 								</li>

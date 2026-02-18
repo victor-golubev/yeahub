@@ -2,32 +2,50 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
-	margin-top: 40px;
+	gap: var(--space-xs);
+	margin-top: var(--space-xl);
+	margin-bottom: var(--space-md);
 	font-size: 0.9rem;
 }
 
 .button {
-	border-radius: 2px;
-	padding: 3px 7px;
+	border-radius: var(--radius-xs);
+	padding: calc(var(--space-05) * 0.75) var(--space-xs);
 	background-color: transparent;
+	color: var(--color-text);
+	border: 1px solid transparent;
+	min-width: calc(var(--space-md) * 1.25);
+	height: calc(var(--space-md) * 1.5);
+	transition:
+		background-color var(--transition-fast),
+		varborder-color (--transition-fast);
+}
+
+.button:hover:not(.active):not(:disabled) {
+	background-color: var(--color-gray-50);
+	border-color: var(--color-gray-200);
 }
 
 .list {
 	display: flex;
 	list-style: none;
-}
-
-.item {
+	gap: var(--space-xxxs);
 }
 
 .active {
-	color: #fff;
-	background-color: var(--main-color);
+	color: var(--color-white);
+	background-color: var(--color-primary);
+	border-color: var(--color-primary);
 }
 
 .ellipsis {
 	cursor: default;
+	color: var(--color-text-secondary);
+	min-width: calc(var(--space-md) * 1.25);
+	height: calc(var(--space-md) * 1.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .next,
@@ -35,33 +53,30 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 1.7rem;
-	width: 1.7rem;
+	height: calc(var(--space-md) * 1.75);
+	width: calc(var(--space-md) * 1.75);
 	padding: 0;
-	border: 1px solid var(--main-color);
-	border-radius: 150px;
-	-webkit-border-radius: 150px;
-	-moz-border-radius: 150px;
-	-ms-border-radius: 150px;
-	-o-border-radius: 150px;
+	border: 1px solid var(--color-primary);
+	border-radius: var(--radius-full);
 }
 
 .arrow {
-	color: var(--main-color);
-	transition: all 0.2s ease;
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
+	color: var(--color-primary);
+	transition:
+		color var(--transition-fast),
+		background-color var(--transition-fast);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .arrow:hover:not(:disabled) {
-	color: #fff;
-	background-color: var(--main-color);
+	color: var(--color-white);
+	background-color: var(--color-primary);
 }
 
 .arrow:disabled {
-	color: #b8b8b8;
+	color: var(--color-gray-400);
 	cursor: default;
-	border-color: #b8b8b8;
+	border-color: var(--color-gray-300);
 }

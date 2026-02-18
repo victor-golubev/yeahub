@@ -1,7 +1,7 @@
 .surface {
-	border-radius: 24px;
-	padding: 24px;
-	gap: 40px;
-	background-color: #fff;
-	box-shadow: 0px 4px 10px 0px #6a63761a;
+	border-radius: var(--radius-xl);
+	padding: var(--space-lg);
+	gap: var(--space-xxl);
+	background-color: var(--color-surface);
+	box-shadow: var(--shadow-md);
 }

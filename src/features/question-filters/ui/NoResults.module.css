@@ -2,20 +2,22 @@
 	text-align: center;
 	font-size: 1.2rem;
 	font-weight: 700;
+	color: var(--color-text);
 }
 
 .noResults p + p {
-	margin-top: 8px;
+	margin-top: var(--space-xs);
 	font-size: 1rem;
 	font-weight: 300;
+	color: var(--color-text-secondary);
 }
 
 .image {
 	height: 186px;
-	object-fit: contain;
 	width: 186px;
+	object-fit: contain;
 }
 
 .reset {
-	margin-top: 20px;
+	margin-top: var(--space-lg);
 }

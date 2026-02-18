@@ -1,37 +1,32 @@
 .navigation {
 	display: flex;
 	justify-content: center;
-	gap: 40px;
+	gap: var(--space-xxl);
 }
 
 .button {
 	display: inline-flex;
 	align-items: center;
-	gap: 12px;
-	transition: color 0.2s ease;
-	padding: 10px 32px;
-	border-radius: 14px;
-	-webkit-border-radius: 14px;
-	-moz-border-radius: 14px;
-	-ms-border-radius: 14px;
-	-o-border-radius: 14px;
-	transition: all 0.2s ease;
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
+	gap: var(--space-sm);
+	padding: 10px var(--space-xl);
+	border-radius: var(--radius-lg);
+	transition:
+		color var(--transition-normal),
+		background-color var(--transition-normal);
+	color: var(--color-text);
 }
 
 .icon {
 	display: block;
-	color: #000;
-	transition: color 0.2s ease;
+	color: var(--color-text);
+	transition: color var(--transition-normal);
 }
+
 .button:hover .icon {
-	color: var(--main-color);
+	color: var(--color-primary);
 }
 
 .button:hover {
-	color: var(--main-color);
-	background-color: #f3f3f3;
+	color: var(--color-primary);
+	background-color: var(--color-surface-secondary);
 }

@@ -1,0 +1,47 @@
+.layout {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-lg);
+}
+
+.main {
+	flex: 1;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+}
+
+.item {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+}
+
+.nav {
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: var(--space-xl);
+}
+
+.aside {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+	max-width: var(--aside-width);
+	min-width: var(--aside-width);
+}
+
+.meta {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+}
+
+.metaList {
+	display: flex;
+	gap: var(--space-md);
+}

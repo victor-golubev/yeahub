@@ -1,17 +1,17 @@
 .section {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: var(--space-xs);
 }
 
 .title {
 	font-weight: 400;
 	font-size: 0.9rem;
-	color: #474747;
+	color: var(--color-text-secondary);
 }
 
 .content {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.5rem;
+	gap: var(--space-xs);
 }

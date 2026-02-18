@@ -2,6 +2,7 @@ import { useGetQuestionsQuery } from '@/entities/question'
 import { useGetSkillsQuery } from '@/entities/skill'
 import { useGetSpecializationsQuery } from '@/entities/specialization'
 import { useQuestionFilters } from '@/features/question-filters'
+import { QuestionsPageSkeleton } from '@/pages/questions-list/ui/QuestionsPageSkeleton'
 import { Container } from '@/shared/ui/Container/Container'
 import { Pagination } from '@/shared/ui/Pagination'
 import { Surface } from '@/shared/ui/Surface/Surface'
@@ -9,7 +10,7 @@ import { PageError } from '@/shared/ui/errors/PageError'
 import { QuestionFilters } from '@/widgets/question-filters/QuestionFilters'
 import { QuestionFiltersSkeleton } from '@/widgets/question-filters/QuestionFiltersSkeleton'
 import { QuestionsList } from '@/widgets/questions-list/QuestionsList'
-import { QuestionsListSkeleton } from '@/widgets/questions-list/QuestionsListSkeleton'
+import { useCallback } from 'react'
 import styles from './QuestionsPage.module.css'
 
 export const QuestionsPage = () => {
@@ -28,9 +29,12 @@ export const QuestionsPage = () => {
 	const { data: specializationsData, isLoading: isSpecializationsLoading } =
 		useGetSpecializationsQuery()
 
-	const handlePageChange = (page: number) => {
-		updateFilters({ page })
-	}
+	const handlePageChange = useCallback(
+		(page: number) => {
+			updateFilters({ page })
+		},
+		[updateFilters]
+	)
 
 	const { data: skills, isLoading: isSkillsLoading } = useGetSkillsQuery(
 		{ specializations: filters.specialization },
@@ -46,32 +50,55 @@ export const QuestionsPage = () => {
 		(questionsData?.total ?? 0) / (apiParams.limit ?? 10)
 	)
 
+	if (isQuestionsLoading) {
+		return <QuestionsPageSkeleton />
+	}
+
+	if (isError) {
+		return (
+			<Container>
+				<div className={styles.layout}>
+					<div className={styles.main}>
+						<Surface>
+							<PageError
+								message="Не удалось загрузить список вопросов"
+								onRetry={refetch}
+							/>
+						</Surface>
+					</div>
+					<div className={styles.aside}>
+						<Surface>
+							{isFiltersLoading ? (
+								<QuestionFiltersSkeleton />
+							) : (
+								<QuestionFilters
+									filters={filters}
+									onUpdate={updateFilters}
+								/>
+							)}
+						</Surface>
+					</div>
+				</div>
+			</Container>
+		)
+	}
+
 	return (
 		<Container>
 			<div className={styles.layout}>
 				<div className={styles.main}>
 					<Surface>
-						{isQuestionsLoading ? (
-							<QuestionsListSkeleton />
-						) : isError ? (
-							<PageError
-								message="Не удалось загрузить список вопросов"
-								onRetry={refetch}
+						<QuestionsList
+							questions={questions}
+							onResetFilters={resetFilters}
+						/>
+
+						{totalPages > 1 && (
+							<Pagination
+								currentPage={filters.page}
+								totalPages={totalPages}
+								onPageChange={handlePageChange}
 							/>
-						) : (
-							<>
-								<QuestionsList
-									questions={questions}
-									onResetFilters={resetFilters}
-								/>
-								{totalPages > 1 && (
-									<Pagination
-										currentPage={filters.page}
-										totalPages={totalPages}
-										onPageChange={handlePageChange}
-									/>
-								)}
-							</>
 						)}
 					</Surface>
 				</div>

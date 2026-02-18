@@ -4,22 +4,19 @@ import { QuestionFiltersSkeleton } from '@/widgets/question-filters/QuestionFilt
 import { QuestionsListSkeleton } from '@/widgets/questions-list/QuestionsListSkeleton'
 import styles from './QuestionsPageSkeleton.module.css'
 
-export const QuestionsPageSkeleton = () => {
-	return (
-		<Container>
-			<div className={styles.layout}>
-				<div className={styles.main}>
-					<Surface as="div">
-						<QuestionsListSkeleton />
-					</Surface>
-				</div>
-
-				<div className={styles.aside}>
-					<Surface as="div">
-						<QuestionFiltersSkeleton />
-					</Surface>
-				</div>
+export const QuestionsPageSkeleton = () => (
+	<Container>
+		<div className={styles.layout}>
+			<div className={styles.main}>
+				<Surface>
+					<QuestionsListSkeleton />
+				</Surface>
 			</div>
-		</Container>
-	)
-}
+			<div className={styles.aside}>
+				<Surface>
+					<QuestionFiltersSkeleton />
+				</Surface>
+			</div>
+		</div>
+	</Container>
+)

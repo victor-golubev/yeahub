@@ -1,0 +1,129 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: calc(var(--space-md) * 3.5);
+	border-radius: var(--radius-md);
+	padding: var(--space-sm) var(--space-md);
+	background: var(--color-white);
+	box-shadow: var(--shadow-sm);
+	transition: box-shadow var(--transition-normal);
+	cursor: pointer;
+}
+
+.card:hover {
+	box-shadow: var(--shadow-md);
+}
+
+.title {
+	font-size: 1.2rem;
+	line-height: 1.2;
+	position: relative;
+	padding-left: var(--space-md);
+}
+
+.title::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: var(--space-xs);
+	height: var(--space-xs);
+	border-radius: var(--radius-full);
+	background-color: var(--color-primary);
+}
+
+.show {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	cursor: pointer;
+}
+
+.body {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height var(--transition-slow);
+}
+
+.bodyOpen {
+	transition: max-height var(--transition-slow);
+	max-height: 500px;
+}
+
+.card[aria-expanded='true'] .body {
+	opacity: 1;
+}
+
+.info {
+	display: flex;
+	justify-content: space-between;
+	margin-top: var(--space-lg);
+	align-items: center;
+}
+
+.meta {
+	display: flex;
+	gap: var(--space-lg);
+}
+
+.metaItem {
+	border-radius: var(--radius-md);
+	padding: calc(var(--space-xs) * 0.75) calc(var(--space-xs) * 1.25);
+	gap: var(--space-xs);
+	background-color: var(--color-gray-100);
+}
+
+.digit {
+	margin-left: calc(var(--space-xs) * 0.75);
+	border-radius: var(--radius-xs);
+	padding: 0 var(--space-xs);
+	background-color: var(--color-primary);
+	color: var(--color-white);
+}
+
+.link {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: color var(--transition-fast);
+}
+
+.link:hover {
+	color: var(--color-primary-hover);
+}
+
+.text {
+	margin-top: var(--space-lg);
+	line-height: 1.4;
+}
+
+.icon {
+	transition: transform var(--transition-slow);
+}
+
+.iconOpen {
+	transition: transform var(--transition-slow);
+	transform: rotate(180deg);
+}
+
+@media (min-width: 768px) {
+	.card {
+		padding: var(--space-md) var(--space-lg);
+	}
+
+	.title {
+		font-size: 1.2rem;
+	}
+
+	.info {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.meta {
+		gap: var(--space-lg);
+	}
+}

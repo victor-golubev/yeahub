@@ -14,7 +14,7 @@ export const QuestionFiltersSkeleton = () => {
 
 				{Array.from({ length: 5 }).map((_, index) => (
 					<Skeleton
-						height="40px"
+						height="42px"
 						width="210px"
 						key={index}
 					/>
@@ -33,7 +33,7 @@ export const QuestionFiltersSkeleton = () => {
 				<div className={styles.row}>
 					{Array.from({ length: 5 }).map((_, index) => (
 						<Skeleton
-							height="40px"
+							height="42px"
 							width="90px"
 							key={index}
 						/>
@@ -54,8 +54,8 @@ export const QuestionFiltersSkeleton = () => {
 				<div className={styles.row}>
 					{Array.from({ length: 5 }).map((_, index) => (
 						<Skeleton
-							height="40px"
-							width="48px"
+							height="42px"
+							width="56px"
 							key={index}
 						/>
 					))}
@@ -71,7 +71,7 @@ export const QuestionFiltersSkeleton = () => {
 					{Array.from({ length: 5 }).map((_, index) => (
 						<Skeleton
 							height="40px"
-							width="36px"
+							width="42px"
 							key={index}
 						/>
 					))}

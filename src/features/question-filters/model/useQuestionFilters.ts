@@ -1,11 +1,9 @@
 import type { GetQuestionsParams } from '@/entities/question'
+import { DEFAULT_SPECIALIZATION_ID } from '@/shared/constants/filters'
+import { PAGINATION_LIMIT } from '@/shared/constants/pagination'
+import { RATE_VALUES } from '@/shared/constants/rate'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
-
-const DEFAULT_FILTERS = {
-	page: 1,
-	specialization: '11'
-}
 
 export interface QuestionFilters {
 	page: number
@@ -25,7 +23,7 @@ export const useQuestionFilters = () => {
 			page: Number(searchParams.get('page')) || 1,
 			search: searchParams.get('search') || undefined,
 			specialization:
-				searchParams.get('specialization') ?? DEFAULT_FILTERS.specialization,
+				searchParams.get('specialization') ?? DEFAULT_SPECIALIZATION_ID,
 			complexity:
 				searchParams
 					.get('complexity')
@@ -51,13 +49,15 @@ export const useQuestionFilters = () => {
 	const apiParams = useMemo<GetQuestionsParams>(() => {
 		return {
 			page: filters.page,
-			limit: 10,
+			limit: PAGINATION_LIMIT,
 			title: filters.search,
 			specialization: filters.specialization,
 			complexity:
 				filters.complexity?.filter(c => c >= 1 && c <= 10).join(',') ||
 				undefined,
-			rate: filters.rate?.filter(r => r >= 1 && r <= 5).join(',') || undefined,
+			rate:
+				filters.rate?.filter(r => RATE_VALUES.some(rv => rv === r)).join(',') ||
+				undefined,
 			skills: filters.skills?.join(','),
 			keywords: filters.keywords
 		}
@@ -65,29 +65,31 @@ export const useQuestionFilters = () => {
 
 	const updateFilters = useCallback(
 		(updates: Partial<QuestionFilters>) => {
-			const newParams = new URLSearchParams(searchParams)
+			setSearchParams(prev => {
+				const newParams = new URLSearchParams(prev)
 
-			if (Object.keys(updates).some(key => key !== 'page')) {
-				newParams.set('page', '1')
-			}
-
-			Object.entries(updates).forEach(([key, value]) => {
-				if (value === undefined || value === null || value === '') {
-					newParams.delete(key)
-				} else if (Array.isArray(value)) {
-					if (value.length === 0) {
-						newParams.delete(key)
-					} else {
-						newParams.set(key, value.join(','))
-					}
-				} else {
-					newParams.set(key, String(value))
+				if (Object.keys(updates).some(key => key !== 'page')) {
+					newParams.set('page', '1')
 				}
-			})
 
-			setSearchParams(newParams)
+				Object.entries(updates).forEach(([key, value]) => {
+					if (value === undefined || value === null || value === '') {
+						newParams.delete(key)
+					} else if (Array.isArray(value)) {
+						if (value.length === 0) {
+							newParams.delete(key)
+						} else {
+							newParams.set(key, value.join(','))
+						}
+					} else {
+						newParams.set(key, String(value))
+					}
+				})
+
+				return newParams
+			})
 		},
-		[searchParams, setSearchParams]
+		[setSearchParams]
 	)
 
 	const resetFilters = useCallback(() => {
@@ -95,18 +97,20 @@ export const useQuestionFilters = () => {
 	}, [setSearchParams])
 
 	useEffect(() => {
-		const hasPage = searchParams.has('page')
-		const hasSpec = searchParams.has('specialization')
+		try {
+			const hasPage = searchParams.has('page')
+			const hasSpec = searchParams.has('specialization')
 
-		if (!hasPage || !hasSpec) {
-			updateFilters({
-				page: hasPage
-					? Number(searchParams.get('page')) || 1
-					: DEFAULT_FILTERS.page,
-				specialization: hasSpec
-					? searchParams.get('specialization') || undefined
-					: DEFAULT_FILTERS.specialization
-			})
+			if (!hasPage || !hasSpec) {
+				updateFilters({
+					page: hasPage ? Number(searchParams.get('page')) : 1,
+					specialization: hasSpec
+						? searchParams.get('specialization') || undefined
+						: DEFAULT_SPECIALIZATION_ID
+				})
+			}
+		} catch (error) {
+			console.error('Ошибка получения фильтров:', error)
 		}
 	}, [])
 

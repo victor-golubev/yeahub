@@ -1,7 +1,7 @@
 .layout {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	max-width: 352px;
-	min-width: 352px;
+	gap: var(--space-xl);
+	max-width: var(--aside-width);
+	min-width: var(--aside-width);
 }

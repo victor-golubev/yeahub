@@ -11,3 +11,5 @@ export type {
 	Question,
 	QuestionPreview
 } from './model/types'
+
+export { QuestionCard } from './ui/QuestionCard.tsx'

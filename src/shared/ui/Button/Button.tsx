@@ -1,4 +1,3 @@
-// shared/ui/Button/Button.tsx
 import type { ButtonHTMLAttributes, ElementType, ReactNode } from 'react'
 import styles from './Button.module.css'
 

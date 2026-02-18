@@ -1,37 +1,44 @@
 .chip {
 	display: inline-flex;
 	align-items: center;
-	gap: 0.5rem;
-	padding: 0.5rem 0.8rem;
-	border-radius: 12px;
+	gap: var(--space-xs);
+	padding: var(--space-xs) var(--space-md);
+	border-radius: var(--radius-lg);
 	font-size: 1rem;
 	font-weight: 500;
-	transition: all 0.2s;
+	transition:
+		color var(--transition-normal),
+		background-color var(--transition-normal),
+		border-color var(--transition-normal);
 	cursor: pointer;
+	border: 1px solid transparent;
+	color: var(--color-text);
+	background-color: var(--color-gray-50);
 }
 
 .chip--outlined {
-	border: 1px solid #d1d5db;
-	background: white;
-	color: #1f2937;
+	border: 1px solid var(--color-border);
+	background: var(--color-surface);
+	color: var(--color-text-secondary);
 }
 
 .chip--outlined:hover {
-	color: #fff;
-	background-color: var(--main-color);
-	border-color: var(--main-color);
+	color: var(--color-white);
+	background-color: var(--color-primary);
+	border-color: var(--color-primary);
 }
 
 .chip--selected {
-	border-color: #7125eb !important;
-	color: #7125eb !important;
+	border-color: var(--color-primary);
+	color: var(--color-primary);
 }
 
 .chip--selected:hover {
-	color: #ffffff !important;
+	color: var(--color-white);
+	background-color: var(--color-primary-hover);
 }
 
 .icon {
-	width: 20px;
-	height: 20px;
+	width: calc(var(--space-md) * 1.25);
+	height: calc(var(--space-md) * 1.25);
 }

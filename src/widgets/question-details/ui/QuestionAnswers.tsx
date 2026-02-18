@@ -1,3 +1,4 @@
+import { sanitizeHtml } from '@/shared/lib/utils/sanitizeHtml'
 import { Surface } from '@/shared/ui/Surface/Surface'
 import styles from './QuestionAnswers.module.css'
 
@@ -14,7 +15,7 @@ export const QuestionAnswers = ({ shortAnswer, longAnswer }: Props) => {
 					<h2 className={styles.title}>Краткий ответ</h2>
 					<div
 						className={styles.content}
-						dangerouslySetInnerHTML={{ __html: shortAnswer }}
+						dangerouslySetInnerHTML={{ __html: sanitizeHtml(shortAnswer) }}
 					/>
 				</div>
 			</Surface>
@@ -24,7 +25,7 @@ export const QuestionAnswers = ({ shortAnswer, longAnswer }: Props) => {
 					<h2 className={styles.title}>Подробный ответ</h2>
 					<div
 						className={styles.content}
-						dangerouslySetInnerHTML={{ __html: longAnswer }}
+						dangerouslySetInnerHTML={{ __html: sanitizeHtml(longAnswer) }}
 					/>
 				</div>
 			</Surface>

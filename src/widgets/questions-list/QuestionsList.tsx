@@ -1,9 +1,8 @@
 import type { Question } from '@/entities/question'
 import { NoResults } from '@/features/question-filters/ui/NoResults'
-import { QuestionCard } from '@/shared/ui/entities/question/QuestionCard'
+import { QuestionCard } from '@/entities/question/ui/QuestionCard'
 import styles from './QuestionsList.module.css'
 
-// widgets/questions-list/ui/QuestionsList.tsx
 interface QuestionsListProps {
 	questions: Question[]
 	onResetFilters: () => void
