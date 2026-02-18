@@ -25,15 +25,3 @@
 	font-weight: 500;
 	color: var(--color-text);
 }
-
-.link {
-	display: flex;
-	align-items: center;
-	gap: var(--space-sm);
-	color: var(--color-link);
-	transition: color var(--transition-normal);
-}
-
-.link:hover {
-	color: var(--color-link-hover);
-}

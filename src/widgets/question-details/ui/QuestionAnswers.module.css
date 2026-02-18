@@ -1,4 +1,5 @@
 .answer {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-lg);
@@ -91,13 +92,13 @@
 }
 
 .content a {
-	color: var(--color-primary);
+	color: var(--color-link);
 	text-decoration: underline;
 	transition: color var(--transition-normal);
 }
 
 .content a:hover {
-	color: var(--color-primary-hover);
+	color: var(--color-link-hover);
 }
 
 .content blockquote {
@@ -113,4 +114,60 @@
 .content strong {
 	font-weight: 600;
 	color: var(--color-text);
+}
+
+.expandWrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: var(--space-xl);
+}
+
+.collapsed {
+	max-height: 250px;
+	overflow: hidden;
+	transition: max-height var(--transition-slow);
+}
+
+.overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100px;
+	background: linear-gradient(to bottom, transparent, var(--color-surface) 90%);
+	pointer-events: none;
+}
+
+.expandBtn {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--space-xxs);
+
+	align-self: flex-start;
+
+	color: var(--color-gray-600);
+	font-size: 0.9rem;
+	font-weight: 500;
+	background: none;
+	border: none;
+	cursor: pointer;
+	transition: color var(--transition-fast);
+	transform: translateX(-50%);
+}
+
+.arrow {
+	transition: transform var(--transition-normal);
+}
+
+.arrowActive {
+	transform: rotate(180deg);
+}
+
+.expandBtn:hover {
+	color: var(--color-link);
 }

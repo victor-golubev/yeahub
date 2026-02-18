@@ -1,47 +1,57 @@
+.aside {
+	max-width: var(--aside-width);
+	min-width: var(--aside-width);
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+}
+
 .layout {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+}
+
+.content {
 	display: flex;
 	align-items: flex-start;
 	gap: var(--space-lg);
 }
 
-.main {
+.primary {
 	flex: 1;
 }
 
-.list {
+.sectionList {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-lg);
 }
 
-.item {
+.section {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-lg);
 }
 
-.nav {
+.actions {
+	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	gap: var(--space-xl);
 }
 
-.aside {
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-lg);
-	max-width: var(--aside-width);
-	min-width: var(--aside-width);
-}
-
-.meta {
+.group {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-sm);
 }
 
-.metaList {
+.values {
 	display: flex;
 	gap: var(--space-md);
 }

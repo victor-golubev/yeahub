@@ -1,12 +1,12 @@
 .button {
 	font-size: 0.9rem;
-	color: var(--color-primary);
+	color: var(--color-link);
 	transition:
 		color var(--transition-fast),
 		vartext-decoration (--transition-fast);
 }
 
 .button:hover {
-	color: var(--color-primary-hover);
+	color: var(--color-link-hover);
 	text-decoration: underline;
 }

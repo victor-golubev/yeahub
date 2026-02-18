@@ -30,12 +30,12 @@
 
 .chip--selected {
 	border-color: var(--color-primary);
-	color: var(--color-primary);
+	color: var(--color-link);
 }
 
 .chip--selected:hover {
 	color: var(--color-white);
-	background-color: var(--color-primary-hover);
+	background-color: var(--color-link-hover);
 }
 
 .icon {

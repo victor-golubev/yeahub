@@ -43,7 +43,7 @@ export const QuestionCard = memo(({ question }: QuestionCardProps) => {
 							Рейтинг: <span className={styles.digit}>{rate}</span>
 						</p>
 
-						<p className={styles.meta__item}>
+						<p className={styles.metaItem}>
 							Сложность: <span className={styles.digit}>{complexity}</span>
 						</p>
 					</div>

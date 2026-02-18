@@ -1,9 +1,12 @@
+.aside {
+	max-width: var(--aside-width);
+	min-width: var(--aside-width);
+}
+
 .layout {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-xl);
-	max-width: var(--aside-width);
-	min-width: var(--aside-width);
 }
 
 .block {

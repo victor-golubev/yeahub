@@ -13,9 +13,7 @@ export const QuestionsPageSkeleton = () => (
 				</Surface>
 			</div>
 			<div className={styles.aside}>
-				<Surface>
-					<QuestionFiltersSkeleton />
-				</Surface>
+				<QuestionFiltersSkeleton />
 			</div>
 		</div>
 	</Container>

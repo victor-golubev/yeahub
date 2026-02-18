@@ -2,21 +2,6 @@
 	margin-bottom: var(--space-xl);
 }
 
-.backLink {
-	display: flex;
-	align-items: center;
-	gap: var(--space-xs);
-	color: var(--color-primary);
-	transition:
-		color var(--transition-normal),
-		text-decoration var(--transition-normal);
-}
-
-.backLink:hover {
-	color: var(--color-primary-hover);
-	text-decoration: underline;
-}
-
 .content {
 	display: flex;
 	align-items: start;
@@ -64,11 +49,11 @@
 }
 
 .button:hover .icon {
-	color: var(--color-primary);
+	color: var(--color-link);
 }
 
 .button:hover {
-	color: var(--color-primary);
+	color: var(--color-link-hover);
 }
 
 .answer {
@@ -150,10 +135,10 @@
 }
 
 .keyword__link {
-	color: var(--color-primary);
+	color: var(--color-link);
 	transition: color var(--transition-normal);
 }
 
 .keyword__link:hover {
-	color: var(--color-primary-hover);
+	color: var(--color-link-hover);
 }
