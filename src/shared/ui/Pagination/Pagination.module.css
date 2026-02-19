@@ -3,19 +3,19 @@
 	justify-content: center;
 	align-items: center;
 	gap: var(--space-xs);
-	margin-top: var(--space-xl);
-	margin-bottom: var(--space-md);
-	font-size: 0.9rem;
+	margin-top: var(--space-lg);
+	font-size: 0.875rem;
+	flex-wrap: wrap;
 }
 
 .button {
+	min-width: 32px;
+	height: 32px;
+	padding: var(--space-xxs) var(--space-xs);
 	border-radius: var(--radius-xs);
-	padding: calc(var(--space-05) * 0.75) var(--space-xs);
 	background-color: transparent;
 	color: var(--color-text);
 	border: 1px solid transparent;
-	min-width: calc(var(--space-md) * 1.25);
-	height: calc(var(--space-md) * 1.5);
 	transition:
 		background-color var(--transition-fast),
 		varborder-color (--transition-fast);
@@ -79,4 +79,19 @@
 	color: var(--color-gray-400);
 	cursor: default;
 	border-color: var(--color-gray-300);
+}
+
+@media (min-width: 768px) {
+	.pagination {
+		gap: var(--space-xs);
+		margin-top: var(--space-xl);
+		margin-bottom: var(--space-md);
+		font-size: 0.9rem;
+	}
+
+	.button {
+		padding: calc(var(--space-05) * 0.75) var(--space-xs);
+		min-width: calc(var(--space-md) * 1.25);
+		height: calc(var(--space-md) * 1.5);
+	}
 }

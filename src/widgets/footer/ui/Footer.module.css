@@ -27,6 +27,8 @@
 .bottom {
 	display: flex;
 	justify-content: space-between;
+	flex-direction: column;
+	gap: var(--space-sm);
 	padding: var(--space-md) 0;
 	border-top: 1px solid var(--color-primary-800);
 	color: var(--color-gray-400);
@@ -42,13 +44,13 @@
 .right {
 	display: flex;
 	align-items: center;
-	gap: var(--space-lg);
 }
 
 .socials {
 	display: flex;
-	align-items: center;
-	gap: var(--space-lg);
+	flex-direction: column;
+	width: 100%;
+	gap: var(--space-sm);
 }
 
 .links {
@@ -62,4 +64,14 @@
 
 .documents:hover {
 	color: var(--color-link);
+}
+
+@media (min-width: 768px) {
+	.bottom {
+		flex-direction: row;
+	}
+	.socials {
+		flex-direction: row;
+		gap: var(--space-lg);
+	}
 }

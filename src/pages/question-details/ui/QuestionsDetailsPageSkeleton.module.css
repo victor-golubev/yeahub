@@ -1,4 +1,5 @@
 .aside {
+	display: none;
 	max-width: var(--aside-width);
 	min-width: var(--aside-width);
 }
@@ -54,4 +55,10 @@
 .values {
 	display: flex;
 	gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+	.aside {
+		display: flex;
+	}
 }

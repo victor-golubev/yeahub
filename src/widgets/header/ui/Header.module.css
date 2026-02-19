@@ -3,7 +3,6 @@
 	justify-content: center;
 	background-color: var(--color-background);
 	box-shadow: var(--shadow-xs);
-	top: 0;
 	z-index: var(--z-index-sticky);
 }
 
@@ -29,8 +28,12 @@
 }
 
 .nav {
-	display: flex;
+	display: none;
 	gap: var(--space-md);
+}
+
+.burger {
+	display: block;
 }
 
 .navLink {
@@ -89,4 +92,14 @@
 
 .registerLink:hover {
 	background-color: var(--color-primary-hover);
+}
+
+@media (min-width: 768px) {
+	.nav {
+		display: flex;
+	}
+
+	.burger {
+		display: none;
+	}
 }

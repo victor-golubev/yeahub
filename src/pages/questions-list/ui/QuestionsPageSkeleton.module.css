@@ -7,3 +7,24 @@
 .main {
 	flex: 1;
 }
+
+.aside {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.layout {
+		gap: var(--space-lg);
+	}
+
+	.main {
+		min-width: 0;
+	}
+
+	.aside {
+		display: flex;
+		width: var(--aside-width);
+		position: sticky;
+		top: var(--space-lg);
+	}
+}

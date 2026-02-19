@@ -9,10 +9,10 @@
 }
 
 .aside {
+	display: none;
 	width: 100%;
 }
 
-/* Tablet и выше */
 @media (min-width: 768px) {
 	.layout {
 		flex-direction: row;
@@ -25,6 +25,7 @@
 	}
 
 	.aside {
+		display: flex;
 		width: var(--aside-width);
 		position: sticky;
 		top: var(--space-lg);

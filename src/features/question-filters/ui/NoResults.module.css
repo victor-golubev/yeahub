@@ -13,11 +13,19 @@
 }
 
 .image {
-	height: 186px;
-	width: 186px;
+	max-height: 150px;
+	max-width: 150px;
 	object-fit: contain;
 }
 
 .reset {
 	margin-top: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+	.image {
+		max-height: 186px;
+		max-width: 186px;
+		object-fit: contain;
+	}
 }

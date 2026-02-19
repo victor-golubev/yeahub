@@ -1,10 +1,10 @@
 .card {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	width: 100%;
-	min-height: calc(var(--space-md) * 3.5);
 	border-radius: var(--radius-md);
-	padding: var(--space-sm) var(--space-md);
+	padding: var(--space-md);
 	background: var(--color-white);
 	box-shadow: var(--shadow-sm);
 	transition: box-shadow var(--transition-normal);
@@ -17,7 +17,7 @@
 
 .title {
 	text-align: left;
-	font-size: 1.2rem;
+	font-size: 1.15rem;
 	font-weight: 500;
 	line-height: 1.2;
 	position: relative;

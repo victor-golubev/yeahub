@@ -1,0 +1,19 @@
+.layout {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.title {
+	margin: var(--space-xl) 0;
+}
+
+.buttons {
+	display: flex;
+	gap: var(--space-lg);
+}
+
+.button {
+	margin: var(--space-xl) 0;
+}
