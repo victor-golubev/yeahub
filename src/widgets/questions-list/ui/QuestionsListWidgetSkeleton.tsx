@@ -1,7 +1,7 @@
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton'
-import styles from './QuestionsListSkeleton.module.css'
+import styles from './QuestionsListWidgetSkeleton.module.css'
 
-export const QuestionsListSkeleton = () => {
+export const QuestionsListWidgetSkeleton = () => {
 	return (
 		<div className={styles.layout}>
 			<div className={styles.header}>

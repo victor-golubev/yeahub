@@ -1,14 +1,21 @@
 import { useGetQuestionByIdQuery } from '@/entities/question'
-import { QuestionDetailsPageSkeleton } from '@/pages/question-details/ui/QuestionsDetailsPageSkeleton'
+import { QuestionDetailsPageSkeleton } from '@/pages/question-details/ui/QuestionDetailsPageSkeleton'
 import { Container } from '@/shared/ui/Container/Container'
 import { PageError } from '@/shared/ui/errors/PageError'
 import { QuestionDetailsWidget } from '@/widgets/question-details/ui/QuestionDetailsWidget'
+import { skipToken } from '@reduxjs/toolkit/query'
 import { Navigate, useParams } from 'react-router-dom'
 
 export const QuestionDetailsPage = () => {
 	const { id } = useParams<{ id: string }>()
 
-	if (!id || Number.isNaN(+id)) {
+	const numericId = id && !Number.isNaN(+id) ? id : undefined
+
+	const { data, isLoading, isError, refetch } = useGetQuestionByIdQuery(
+		numericId ?? skipToken
+	)
+
+	if (!numericId) {
 		return (
 			<Navigate
 				to="/questions"
@@ -16,8 +23,6 @@ export const QuestionDetailsPage = () => {
 			/>
 		)
 	}
-
-	const { data, isLoading, isError, refetch } = useGetQuestionByIdQuery(id)
 
 	if (isLoading) return <QuestionDetailsPageSkeleton />
 

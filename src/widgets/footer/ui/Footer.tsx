@@ -7,6 +7,14 @@ import tiktokIcon from '../assets/social/tiktok.svg'
 import youtubeIcon from '../assets/social/youtube.svg'
 import styles from './Footer.module.css'
 
+const SOCIAL_LINKS = [
+	{ href: 'https://figma.com/...', icon: figmaIcon, alt: 'Figma' },
+	{ href: 'https://t.me/...', icon: telegramIcon, alt: 'Telegram' },
+	{ href: 'https://youtube.com/...', icon: youtubeIcon, alt: 'YouTube' },
+	{ href: 'https://tiktok.com/...', icon: tiktokIcon, alt: 'TikTok' },
+	{ href: 'https://github.com/...', icon: githubIcon, alt: 'GitHub' }
+]
+
 export const Footer = () => {
 	return (
 		<footer className={styles.footer}>
@@ -21,9 +29,11 @@ export const Footer = () => {
 							alt="Yeahub"
 						/>
 					</a>
+
 					<div className={styles.slogan}>
 						<p>Выбери, каким будет IT завтра, вместе с нами</p>
 					</div>
+
 					<div className={styles.info}>
 						<p>
 							YeaHub — это полностью открытый проект, призванный объединить
@@ -31,9 +41,10 @@ export const Footer = () => {
 							на GitHub. Дизайн проекта также открыт для ознакомления в Figma.
 						</p>
 					</div>
+
 					<div className={styles.bottom}>
 						<div className={styles.left}>
-							<p className={styles.copy}>© 2024 YeaHub</p>
+							<p className={styles.copy}>© {new Date().getFullYear()} YeaHub</p>
 							<a
 								href="/"
 								className={styles.documents}
@@ -41,55 +52,24 @@ export const Footer = () => {
 								Документы
 							</a>
 						</div>
+
 						<div className={styles.right}>
 							<div className={styles.socials}>
 								<p>Ищите нас и в других соцсетях @yeahub_it</p>
 								<div className={styles.links}>
-									<a
-										href="/"
-										rel="noopener noreferrer"
-									>
-										<img
-											src={figmaIcon}
-											alt="figmaIcon"
-										/>
-									</a>
-									<a
-										href="/"
-										rel="noopener noreferrer"
-									>
-										<img
-											src={telegramIcon}
-											alt="telegramIcon"
-										/>
-									</a>
-									<a
-										href="/"
-										rel="noopener noreferrer"
-									>
-										<img
-											src={youtubeIcon}
-											alt="youtubeIcon"
-										/>
-									</a>
-									<a
-										href="/"
-										rel="noopener noreferrer"
-									>
-										<img
-											src={tiktokIcon}
-											alt="tiktokIcon"
-										/>
-									</a>
-									<a
-										href="/"
-										rel="noopener noreferrer"
-									>
-										<img
-											src={githubIcon}
-											alt="githubIcon"
-										/>
-									</a>
+									{SOCIAL_LINKS.map(social => (
+										<a
+											key={social.alt}
+											href={social.href}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											<img
+												src={social.icon}
+												alt={social.alt}
+											/>
+										</a>
+									))}
 								</div>
 							</div>
 						</div>

@@ -12,4 +12,4 @@ export type {
 	QuestionPreview
 } from './model/types'
 
-export { QuestionCard } from './ui/QuestionCard.tsx'
+export { QuestionCard } from './ui/QuestionCard/QuestionCard.tsx'

@@ -1,7 +1,7 @@
 import { Container } from '@/shared/ui/Container/Container'
 import { Surface } from '@/shared/ui/Surface/Surface'
-import { QuestionFiltersSkeleton } from '@/widgets/question-filters/QuestionFiltersSkeleton'
-import { QuestionsListSkeleton } from '@/widgets/questions-list/QuestionsListSkeleton'
+import { QuestionFiltersWidgetSkeleton } from '@/widgets/question-filters/ui/QuestionFiltersWidgetSkeleton'
+import { QuestionsListWidgetSkeleton } from '@/widgets/questions-list/ui/QuestionsListWidgetSkeleton'
 import styles from './QuestionsPageSkeleton.module.css'
 
 export const QuestionsPageSkeleton = () => (
@@ -9,11 +9,13 @@ export const QuestionsPageSkeleton = () => (
 		<div className={styles.layout}>
 			<div className={styles.main}>
 				<Surface>
-					<QuestionsListSkeleton />
+					<QuestionsListWidgetSkeleton />
 				</Surface>
 			</div>
 			<div className={styles.aside}>
-				<QuestionFiltersSkeleton />
+				<Surface>
+					<QuestionFiltersWidgetSkeleton />
+				</Surface>
 			</div>
 		</div>
 	</Container>

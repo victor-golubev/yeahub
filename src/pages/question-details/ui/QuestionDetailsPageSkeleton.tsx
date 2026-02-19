@@ -1,7 +1,7 @@
 import { Container } from '@/shared/ui/Container/Container'
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton'
 import { Surface } from '@/shared/ui/Surface/Surface'
-import styles from './QuestionsDetailsPageSkeleton.module.css'
+import styles from './QuestionDetailsPageSkeleton.module.css'
 
 export const QuestionDetailsPageSkeleton = () => (
 	<Container>

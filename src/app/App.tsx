@@ -1,5 +1,5 @@
-import { ErrorBoundary } from '@/shared/ui/providers/ErrorBoundary'
-import { appRouter } from '@/app/router'
+import { ErrorBoundary } from '@/app/providers/ErrorBoundary'
+import { appRouter } from '@/app/appRouter'
 import { store } from '@/app/store'
 import { Provider } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'

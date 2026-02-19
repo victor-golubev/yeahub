@@ -1,2 +1,2 @@
 export { QuestionDetailsPage } from './ui/QuestionDetailsPage'
-export { QuestionDetailsPageSkeleton } from './ui/QuestionsDetailsPageSkeleton'
+export { QuestionDetailsPageSkeleton } from './ui/QuestionDetailsPageSkeleton'

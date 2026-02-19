@@ -1,11 +1,5 @@
+import type { Skill } from '@/entities/skill/model/types'
 import { baseApi } from '@/shared/api/baseApi'
-
-export type Skill = {
-	id: number
-	title: string
-	description?: string
-	imageSrc?: string
-}
 
 export const skillsApi = baseApi.injectEndpoints({
 	endpoints: builder => ({

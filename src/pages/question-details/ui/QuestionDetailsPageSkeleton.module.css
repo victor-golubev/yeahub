@@ -4,6 +4,10 @@
 	min-width: var(--aside-width);
 }
 
+.aside > div {
+	width: 100%;
+}
+
 .info {
 	display: flex;
 	flex-direction: column;
@@ -57,7 +61,7 @@
 	gap: var(--space-md);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
 	.aside {
 		display: flex;
 	}

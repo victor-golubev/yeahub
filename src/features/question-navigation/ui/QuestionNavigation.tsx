@@ -1,4 +1,4 @@
-import { useQuestionNavigation } from '../model/useQuestionNavigation'
+import { useQuestionNavigation } from '../lib/useQuestionNavigation'
 import styles from './QuestionNavigation.module.css'
 
 type Props = {
@@ -7,15 +7,17 @@ type Props = {
 }
 
 export const QuestionNavigation = ({ prevId, nextId }: Props) => {
-	const { canGoPrev, canGoNext, goPrev, goNext } = useQuestionNavigation({
-		prevId,
-		nextId
-	})
+	const { canGoPrev, canGoNext, goPrev, goNext, onHoverNext, onHoverPrev } =
+		useQuestionNavigation({
+			prevId,
+			nextId
+		})
 
 	return (
 		<div className={styles.navigation}>
 			<button
 				onClick={goPrev}
+				onMouseEnter={onHoverPrev}
 				disabled={!canGoPrev}
 				className={styles.button}
 			>
@@ -37,6 +39,7 @@ export const QuestionNavigation = ({ prevId, nextId }: Props) => {
 
 			<button
 				onClick={goNext}
+				onMouseEnter={onHoverNext}
 				disabled={!canGoNext}
 				className={styles.button}
 			>

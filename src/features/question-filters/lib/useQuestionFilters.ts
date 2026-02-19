@@ -1,19 +1,10 @@
 import type { GetQuestionsParams } from '@/entities/question'
+import type { QuestionFilters } from '@/features/question-filters/model/types'
 import { DEFAULT_SPECIALIZATION_ID } from '@/shared/constants/filters'
 import { PAGINATION_LIMIT } from '@/shared/constants/pagination'
 import { RATE_VALUES } from '@/shared/constants/rate'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
-
-export interface QuestionFilters {
-	page: number
-	search?: string
-	specialization: string
-	complexity?: number[]
-	rate?: number[]
-	skills?: number[]
-	keywords?: string
-}
 
 export const useQuestionFilters = () => {
 	const [searchParams, setSearchParams] = useSearchParams()

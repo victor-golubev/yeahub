@@ -1,13 +1,8 @@
 import type { Skill } from '@/entities/skill'
+import type { Specialization } from '@/entities/specialization'
 
 export type ComplexityLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 export type Rate = 1 | 2 | 3 | 4 | 5
-
-export interface Specialization {
-	id: number
-	title: string
-	description: string
-}
 
 export interface Question {
 	id: number

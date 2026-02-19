@@ -1,8 +1,8 @@
-export { useQuestionFilters } from './model/useQuestionFilters'
-export type { QuestionFilters } from './model/useQuestionFilters'
+export { useQuestionFilters } from './lib/useQuestionFilters'
+export type { QuestionFilters } from './model/types'
 
-export { SearchInput } from './ui/SearchInput'
 export { ComplexityFilter } from './ui/ComplexityFilter'
 export { RateFilter } from './ui/RateFilter'
+export { SearchInput } from './ui/SearchInput'
 export { SkillsFilter } from './ui/SkillsFilter'
 export { SpecializationFilter } from './ui/SpecializationFilter'

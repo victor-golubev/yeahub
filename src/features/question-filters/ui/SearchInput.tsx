@@ -1,4 +1,4 @@
-import searchIcon from '@/shared/assets/images/search-icon.svg'
+import searchIcon from '@/shared/assets/icons/search-icon.svg'
 import { useEffect, useRef, useState } from 'react'
 import styles from './SearchInput.module.css'
 

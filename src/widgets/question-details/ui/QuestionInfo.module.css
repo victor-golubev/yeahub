@@ -84,7 +84,7 @@
 	color: var(--color-link-hover);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
 	.aside {
 		display: flex;
 	}

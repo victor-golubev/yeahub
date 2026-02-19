@@ -1,12 +1,7 @@
+import type { Skill } from '@/entities/skill'
 import { Surface } from '@/shared/ui/Surface/Surface'
 import { Link } from 'react-router-dom'
 import styles from './QuestionInfo.module.css'
-
-type Skill = {
-	id: number
-	title: string
-	imageSrc?: string
-}
 
 type Props = {
 	complexity: number

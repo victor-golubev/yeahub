@@ -1,7 +1,8 @@
 import { QuestionDetailsPageSkeleton } from '@/pages/question-details'
 import { QuestionsPageSkeleton } from '@/pages/questions-list'
+import { ROUTES } from '@/shared/config'
 import { PageError } from '@/shared/ui/errors/PageError'
-import { BaseLayout } from '@/shared/ui/layouts/BaseLayout'
+import { BaseLayout } from '@/app/layouts/BaseLayout'
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
@@ -27,13 +28,13 @@ export const appRouter = createBrowserRouter([
 				index: true,
 				element: (
 					<Navigate
-						to="/questions"
+						to={ROUTES.QUESTIONS}
 						replace
 					/>
 				)
 			},
 			{
-				path: 'questions',
+				path: ROUTES.QUESTIONS,
 				element: (
 					<Suspense fallback={<QuestionsPageSkeleton />}>
 						<QuestionsPage />
@@ -41,7 +42,7 @@ export const appRouter = createBrowserRouter([
 				)
 			},
 			{
-				path: 'questions/:id',
+				path: ROUTES.QUESTION_ITEM,
 				element: (
 					<Suspense fallback={<QuestionDetailsPageSkeleton />}>
 						<QuestionDetailsPage />
@@ -51,13 +52,10 @@ export const appRouter = createBrowserRouter([
 			{
 				path: '*',
 				element: (
-					<div className="page-404">
-						<h1>404 - Страница не найдена</h1>
-						<Navigate
-							to="/questions"
-							replace
-						/>
-					</div>
+					<PageError
+						message="Страница не найдена"
+						onRetry={() => window.location.assign(ROUTES.QUESTIONS)}
+					/>
 				)
 			}
 		]

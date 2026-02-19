@@ -1,5 +1,5 @@
 import type { Question } from '@/entities/question'
-import { QuestionNavigation } from '@/features/question-navigation/ui/QuestionNavigation'
+import { QuestionNavigation } from '@/features/question-navigation'
 import { BackButton } from '@/shared/ui/BackButton/BackButton'
 import { Surface } from '@/shared/ui/Surface/Surface'
 import { QuestionAnswers } from './QuestionAnswers'

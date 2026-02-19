@@ -1,5 +1,5 @@
 import type { QuestionPreview } from '@/entities/question/model/types'
-import accordeon from '@/shared/assets/images/accordeon.svg'
+import accordion from '@/shared/assets/icons/accordion.svg'
 import { cn } from '@/shared/lib/utils/cn'
 import { memo, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -30,7 +30,7 @@ export const QuestionCard = memo(({ question }: QuestionCardProps) => {
 			>
 				<p className={styles.title}>{title}</p>
 				<img
-					src={accordeon}
+					src={accordion}
 					alt=""
 					className={cn(styles.icon, isOpen && styles.iconOpen)}
 				/>
