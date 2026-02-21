@@ -1,6 +1,7 @@
 // widgets/questions-list/ui/QuestionsList.tsx
 import { QuestionCard, useGetQuestionsQuery } from '@/entities/question'
 import { useQuestionFilters } from '@/features/question-filters'
+import { FiltersIcon } from '@/shared/assets/icons/FiltersIcon'
 import { NoResults } from '@/shared/ui/NoResults/NoResults'
 import { Pagination } from '@/shared/ui/Pagination'
 import { PageError } from '@/shared/ui/errors/PageError'
@@ -8,8 +9,13 @@ import { QuestionsListWidgetSkeleton } from '@/widgets/questions-list/ui/Questio
 import styles from './QuestionsListWidget.module.css'
 
 export const QuestionsListWidget = () => {
-	const { filters, apiParams, updateFilters, resetFilters } =
-		useQuestionFilters()
+	const {
+		filters,
+		apiParams,
+		updateFilters,
+		resetFilters,
+		toggleMobileFilters
+	} = useQuestionFilters()
 
 	const { data, isLoading, isError, refetch } = useGetQuestionsQuery(apiParams)
 
@@ -30,6 +36,12 @@ export const QuestionsListWidget = () => {
 		<div className={styles.layout}>
 			<header className={styles.header}>
 				<h1 className={styles.title}>Вопросы</h1>
+				<button
+					className={styles.filterButton}
+					onClick={toggleMobileFilters}
+				>
+					<FiltersIcon />
+				</button>
 			</header>
 
 			<div className={styles.list}>

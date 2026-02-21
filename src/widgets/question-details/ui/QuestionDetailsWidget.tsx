@@ -1,7 +1,10 @@
 import type { Question } from '@/entities/question'
 import { QuestionNavigation } from '@/features/question-navigation'
+import { MetaIcon } from '@/shared/assets/icons/MetaIcon'
 import { BackButton } from '@/shared/ui/BackButton/BackButton'
+import { SidePanel } from '@/shared/ui/SidePanel/SidePanel'
 import { Surface } from '@/shared/ui/Surface/Surface'
+import { useState } from 'react'
 import { QuestionAnswers } from './QuestionAnswers'
 import styles from './QuestionDetailsWidget.module.css'
 import { QuestionInfo } from './QuestionInfo'
@@ -11,17 +14,44 @@ type Props = {
 }
 
 export const QuestionDetailsWidget = ({ question }: Props) => {
+	const [isSidePanelOpen, setIsSidePanelOpen] = useState(false)
+
+	const toggleSidePanel = () => setIsSidePanelOpen(prev => !prev)
+	const closeSidePanel = () => setIsSidePanelOpen(false)
+
+	const infoContent = (
+		<QuestionInfo
+			complexity={question.complexity}
+			rate={question.rate}
+			skills={question.questionSkills}
+			keywords={question.keywords}
+		/>
+	)
+
 	return (
 		<div className={styles.layout}>
 			<div className={styles.breadcrumbs}>
 				<BackButton to="/questions" />
 			</div>
+
 			<div className={styles.content}>
 				<div className={styles.main}>
 					<Surface>
-						<h1 className={styles.title}>{question.title}</h1>
-						{question.description && <p>{question.description}</p>}
+						<div className={styles.header}>
+							<h1 className={styles.title}>{question.title}</h1>
+							<button
+								className={styles.metaButton}
+								onClick={toggleSidePanel}
+								aria-label="Информация о вопросе"
+							>
+								<MetaIcon />
+							</button>
+						</div>
+						<div className={styles.question}>
+							{question.description && <p>{question.description}</p>}
+						</div>
 					</Surface>
+
 					<Surface>
 						<QuestionNavigation
 							prevId={question.id - 1}
@@ -35,13 +65,17 @@ export const QuestionDetailsWidget = ({ question }: Props) => {
 					/>
 				</div>
 
-				<QuestionInfo
-					complexity={question.complexity}
-					rate={question.rate}
-					skills={question.questionSkills}
-					keywords={question.keywords}
-				/>
+				<div className={styles.aside}>
+					<Surface>{infoContent}</Surface>
+				</div>
 			</div>
+
+			<SidePanel
+				isOpen={isSidePanelOpen}
+				onClose={closeSidePanel}
+			>
+				{infoContent}
+			</SidePanel>
 		</div>
 	)
 }

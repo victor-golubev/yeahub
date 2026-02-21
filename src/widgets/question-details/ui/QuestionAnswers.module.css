@@ -142,10 +142,10 @@
 
 .overlay {
 	position: absolute;
-	bottom: 0;
+	bottom: 32px;
 	left: 0;
 	right: 0;
-	height: 100px;
+	height: 20px;
 	background: linear-gradient(to bottom, transparent, var(--color-surface) 90%);
 	pointer-events: none;
 }

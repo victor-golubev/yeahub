@@ -1,0 +1,6 @@
+.overlay {
+	position: absolute;
+	inset: 0;
+	background-color: transparent;
+	transition: opacity 0.3s ease;
+}

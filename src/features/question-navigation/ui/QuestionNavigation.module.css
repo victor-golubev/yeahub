@@ -1,7 +1,7 @@
 .navigation {
 	display: flex;
 	justify-content: center;
-	gap: var(--space-xxl);
+	gap: var(--space-xl);
 }
 
 .button {

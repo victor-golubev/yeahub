@@ -1,0 +1,39 @@
+.panel {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: var(--aside-width);
+	background: var(--color-surface);
+	box-shadow: var(--shadow-md);
+	padding: var(--space-md);
+	transform: translateX(100%);
+	transition: transform var(--transition-slow);
+	z-index: 100;
+}
+
+.panel.open {
+	transform: translateX(0);
+}
+
+.header {
+	display: flex;
+	justify-content: end;
+	padding-bottom: var(--space-md);
+}
+
+.close {
+	color: var(--color-danger);
+	cursor: pointer;
+}
+
+.inner {
+	height: 100%;
+	overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+	.panel {
+		display: none;
+	}
+}

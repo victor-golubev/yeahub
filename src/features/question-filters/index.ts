@@ -1,6 +1,11 @@
 export { useQuestionFilters } from './lib/useQuestionFilters'
 export type { QuestionFilters } from './model/types'
 
+export {
+	closeFilters,
+	questionFiltersSlice,
+	toggleFilters
+} from './model/slice'
 export { ComplexityFilter } from './ui/ComplexityFilter'
 export { RateFilter } from './ui/RateFilter'
 export { SearchInput } from './ui/SearchInput'

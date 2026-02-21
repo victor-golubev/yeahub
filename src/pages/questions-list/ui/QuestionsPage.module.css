@@ -23,7 +23,9 @@
 		flex: 1;
 		min-width: 0;
 	}
+}
 
+@media (min-width: 1024px) {
 	.aside {
 		display: flex;
 		width: var(--aside-width);

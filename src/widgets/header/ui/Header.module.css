@@ -1,9 +1,10 @@
 .header {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	background-color: var(--color-background);
 	box-shadow: var(--shadow-xs);
-	z-index: var(--z-index-sticky);
+	z-index: 100;
 }
 
 .inner {
@@ -30,6 +31,10 @@
 .nav {
 	display: none;
 	gap: var(--space-md);
+}
+.burgerWrapper {
+	display: flex;
+	position: relative;
 }
 
 .burger {
@@ -94,6 +99,143 @@
 	background-color: var(--color-primary-hover);
 }
 
+.burgerButton {
+	display: none;
+	padding: var(--space-xxs);
+	border-radius: var(--radius-md);
+}
+
+.burgerButton:hover {
+	color: var(--color-link);
+	background-color: var(--color-gray-100);
+}
+
+.mobileDrawer {
+	position: absolute;
+	right: 24px;
+	top: 100%;
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-md);
+	background-color: var(--color-white);
+	padding: var(--space-xs);
+	z-index: 100;
+}
+
+.mobileDrawerLink {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: var(--space-sm);
+	font-weight: 500;
+	font-size: 1.2rem;
+	padding: var(--space-xs);
+}
+
+.mobileDrawerLink:hover {
+	border-radius: var(--radius-md);
+	background-color: var(--color-gray-100);
+}
+
+.mobileDrawerIcon {
+	text-align: center;
+	width: 24px;
+	height: 24px;
+}
+
+.mobileMenuContent {
+	display: flex;
+	flex-direction: column;
+}
+
+.mobileNavList {
+	display: flex;
+	flex-direction: column;
+}
+
+.divider {
+	border: none;
+	border-top: 1px solid var(--color-gray-100);
+	margin: var(--space-xs) 0;
+}
+
+/* Убедись, что эти стили для ссылок у тебя есть */
+.mobileDrawerLink {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: var(--space-sm);
+	font-weight: 500;
+	font-size: 1.1rem;
+	padding: var(--space-sm);
+	color: var(--color-text);
+	text-decoration: none;
+	transition: background-color 0.2s;
+}
+
+.mobileDrawerLink:hover {
+	border-radius: var(--radius-md);
+	background-color: var(--color-gray-100);
+}
+
+/* Добавь/обнови в Header.module.css */
+
+.mobileNavTrigger {
+	display: none; /* Скрыта на десктопе */
+	align-items: center;
+	gap: var(--space-xxs);
+	background: none;
+	border: none;
+	font-weight: 500;
+	font-size: 1rem;
+	color: var(--color-text);
+	cursor: pointer;
+	padding: var(--space-xs);
+	border-radius: var(--radius-md);
+}
+
+.mobileNavTrigger:hover {
+	background-color: var(--color-gray-100);
+}
+
+.chevron {
+	width: 16px;
+	height: 16px;
+	transition: transform 0.2s;
+}
+
+.prepWrapper {
+	position: relative;
+	display: none;
+}
+
+.prepDrawer {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	margin-top: 16px;
+	min-width: 200px;
+	background-color: var(--color-white);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-md);
+	padding: var(--space-xs);
+	z-index: 100;
+}
+
+.chevronActive {
+	transform: rotate(180deg);
+}
+
+@keyframes slideLeft {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
 @media (min-width: 768px) {
 	.nav {
 		display: flex;
@@ -101,5 +243,41 @@
 
 	.burger {
 		display: none;
+	}
+
+	.inner {
+		padding: var(--space-md) 0;
+	}
+}
+
+@media (min-width: 1024px) {
+	.mobileDrawer {
+		display: none;
+	}
+
+	.burgerWrapper {
+		display: none;
+	}
+}
+
+@media (max-width: 1023px) {
+	.nav,
+	.right {
+		display: none;
+	}
+
+	.mobileNavTrigger {
+		display: flex;
+	}
+
+	.burgerButton {
+		display: flex;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+
+	.prepWrapper {
+		display: block;
 	}
 }

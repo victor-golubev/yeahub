@@ -1,4 +1,5 @@
 import { Button } from '@/shared/ui/Button'
+import { Container } from '@/shared/ui/Container/Container'
 import { Surface } from '@/shared/ui/Surface/Surface'
 import { useNavigate } from 'react-router-dom'
 import styles from './PageError.module.css'
@@ -15,28 +16,30 @@ export const PageError = ({
 	const navigate = useNavigate()
 
 	return (
-		<Surface>
-			<div className={styles.layout}>
-				<h2 className={styles.title}>Ошибка загрузки</h2>
-				<p>{message}</p>
-				<div className={styles.buttons}>
-					{onRetry && (
+		<Container>
+			<Surface>
+				<div className={styles.layout}>
+					<h2 className={styles.title}>Ошибка загрузки</h2>
+					<p>{message}</p>
+					<div className={styles.buttons}>
+						{onRetry && (
+							<Button
+								onClick={onRetry}
+								className={styles.button}
+							>
+								Повторить попытку
+							</Button>
+						)}
 						<Button
-							onClick={onRetry}
+							variant="secondary"
+							onClick={() => navigate(-1)}
 							className={styles.button}
 						>
-							Повторить попытку
+							Назад
 						</Button>
-					)}
-					<Button
-						variant="secondary"
-						onClick={() => navigate(-1)}
-						className={styles.button}
-					>
-						Назад
-					</Button>
+					</div>
 				</div>
-			</div>
-		</Surface>
+			</Surface>
+		</Container>
 	)
 }

@@ -1,4 +1,4 @@
-import searchIcon from '@/shared/assets/icons/search-icon.svg'
+import { SearchIcon } from '@/shared/assets/icons/SearchIcon'
 import { useEffect, useRef, useState } from 'react'
 import styles from './SearchInput.module.css'
 
@@ -42,10 +42,7 @@ export const SearchInput = ({
 			tabIndex={0}
 			onClick={handleWrapperClick}
 		>
-			<img
-				src={searchIcon}
-				alt="Search"
-			/>
+			<SearchIcon className={styles.icon} />
 			<input
 				type="text"
 				value={localValue}

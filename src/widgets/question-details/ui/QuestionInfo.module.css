@@ -1,15 +1,9 @@
-.aside {
-	display: none;
-	flex-direction: column;
-	gap: var(--space-lg);
-	width: var(--aside-width);
-	flex-shrink: 0;
-}
-
-.info {
+.layout {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-lg);
+	flex-shrink: 0;
+	width: 100%;
 }
 
 .section {
@@ -82,10 +76,4 @@
 
 .keyword:hover {
 	color: var(--color-link-hover);
-}
-
-@media (min-width: 1024px) {
-	.aside {
-		display: flex;
-	}
 }

@@ -1,5 +1,6 @@
 .search {
 	display: flex;
+	align-items: center;
 	gap: var(--space-sm);
 	width: 100%;
 	height: var(--space-xxl);
@@ -33,4 +34,8 @@
 	font-weight: 400;
 	font-size: 1rem;
 	line-height: 1.5;
+}
+
+.icon {
+	color: var(--color-gray-400);
 }

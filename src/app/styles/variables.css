@@ -138,3 +138,9 @@
 	--color-input-bg: var(--color-gray-800);
 	--color-input-border: var(--color-gray-600);
 }
+
+@media (max-width: 1023px) {
+	:root {
+		--aside-width: 320px;
+	}
+}

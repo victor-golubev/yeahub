@@ -68,20 +68,20 @@
 
 .meta {
 	display: flex;
-	gap: var(--space-lg);
+	gap: var(--space-sm);
 }
 
 .metaItem {
 	border-radius: var(--radius-md);
-	padding: calc(var(--space-xs) * 0.75) calc(var(--space-xs) * 1.25);
+	padding: var(--space-xxs) var(--space-xs);
 	gap: var(--space-xs);
 	background-color: var(--color-gray-100);
 }
 
 .digit {
-	margin-left: calc(var(--space-xs) * 0.75);
+	margin-left: var(--space-xxs);
 	border-radius: var(--radius-xs);
-	padding: 0 var(--space-xs);
+	padding: 0 var(--space-xxs);
 	background-color: var(--color-primary);
 	color: var(--color-white);
 }
@@ -127,5 +127,17 @@
 
 	.meta {
 		gap: var(--space-lg);
+	}
+
+	.metaItem {
+		border-radius: var(--radius-md);
+		padding: calc(var(--space-xs) * 0.75) calc(var(--space-xs) * 1.25);
+		gap: var(--space-xs);
+		background-color: var(--color-gray-100);
+	}
+
+	.digit {
+		margin-left: var(--space-xs);
+		padding: 0 var(--space-xs);
 	}
 }
