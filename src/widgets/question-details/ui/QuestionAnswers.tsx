@@ -1,7 +1,7 @@
 import accordion from '@/shared/assets/icons/accordion.svg'
 import { cn } from '@/shared/lib/utils/cn'
 import { sanitizeHtml } from '@/shared/lib/utils/sanitizeHtml'
-import { Surface } from '@/shared/ui/Surface/Surface'
+import { Surface } from '@/shared/ui'
 import { useState } from 'react'
 import styles from './QuestionAnswers.module.css'
 

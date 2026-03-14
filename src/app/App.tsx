@@ -1,6 +1,6 @@
-import { ErrorBoundary } from '@/app/providers/ErrorBoundary'
 import { appRouter } from '@/app/appRouter'
 import { store } from '@/app/store'
+import { ErrorBoundary } from '@/shared/ui'
 import { Provider } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'
 

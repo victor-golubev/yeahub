@@ -7,6 +7,7 @@ interface ChipProps {
 	icon?: string
 	onClick?: () => void
 	variant?: 'default' | 'outlined'
+	disabled?: boolean
 }
 
 export const Chip = ({
@@ -14,18 +15,21 @@ export const Chip = ({
 	selected = false,
 	icon,
 	onClick,
-	variant = 'outlined'
+	variant = 'outlined',
+	disabled = false
 }: ChipProps) => {
 	return (
 		<button
 			type="button"
 			onClick={onClick}
+			disabled={disabled}
+			aria-pressed={selected}
 			className={`
-        ${styles.chip} 
+        ${styles.chip}
         ${styles[`chip--${variant}`]}
         ${selected ? styles['chip--selected'] : ''}
+        ${disabled ? styles['chip--disabled'] : ''}
       `}
-			aria-pressed={selected}
 		>
 			{icon && (
 				<img

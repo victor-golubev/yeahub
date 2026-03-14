@@ -1,8 +1,8 @@
 import type { Skill } from '@/entities/skill'
 import type { Specialization } from '@/entities/specialization'
+import type { ComplexityLevel, Rate } from '@/shared/constants'
 
-export type ComplexityLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-export type Rate = 1 | 2 | 3 | 4 | 5
+export type { ComplexityLevel, Rate } from '@/shared/constants'
 
 export interface Question {
 	id: number

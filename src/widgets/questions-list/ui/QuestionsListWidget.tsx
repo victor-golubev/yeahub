@@ -1,12 +1,12 @@
-// widgets/questions-list/ui/QuestionsList.tsx
 import { QuestionCard, useGetQuestionsQuery } from '@/entities/question'
 import { useQuestionFilters } from '@/features/question-filters'
 import { FiltersIcon } from '@/shared/assets/icons/FiltersIcon'
-import { NoResults } from '@/shared/ui/NoResults/NoResults'
-import { Pagination } from '@/shared/ui/Pagination'
-import { PageError } from '@/shared/ui/errors/PageError'
+import { NoResults } from '@/shared/ui'
+import { Pagination } from '@/shared/ui'
+import { PageError } from '@/shared/ui'
 import { QuestionsListWidgetSkeleton } from '@/widgets/questions-list/ui/QuestionsListWidgetSkeleton'
 import styles from './QuestionsListWidget.module.css'
+import { PAGINATION_LIMIT } from '@/shared/constants'
 
 export const QuestionsListWidget = () => {
 	const {
@@ -56,7 +56,7 @@ export const QuestionsListWidget = () => {
 			<div className={styles.footer}>
 				<Pagination
 					currentPage={filters.page}
-					totalPages={Math.ceil((data?.total ?? 0) / 10)}
+					totalPages={Math.ceil((data?.total ?? 0) / PAGINATION_LIMIT)}
 					onPageChange={page => updateFilters({ page })}
 				/>
 			</div>

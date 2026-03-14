@@ -4,7 +4,7 @@
 	justify-content: center;
 	background-color: var(--color-background);
 	box-shadow: var(--shadow-xs);
-	z-index: 100;
+	z-index: 98;
 }
 
 .inner {
@@ -19,13 +19,6 @@
 	display: flex;
 	align-items: center;
 	gap: var(--space-xl);
-}
-
-.logo {
-	display: flex;
-	align-items: center;
-	gap: var(--space-sm);
-	text-decoration: none;
 }
 
 .nav {
@@ -160,7 +153,6 @@
 	margin: var(--space-xs) 0;
 }
 
-/* Убедись, что эти стили для ссылок у тебя есть */
 .mobileDrawerLink {
 	display: flex;
 	justify-content: start;
@@ -179,10 +171,8 @@
 	background-color: var(--color-gray-100);
 }
 
-/* Добавь/обнови в Header.module.css */
-
 .mobileNavTrigger {
-	display: none; /* Скрыта на десктопе */
+	display: none;
 	align-items: center;
 	gap: var(--space-xxs);
 	background: none;

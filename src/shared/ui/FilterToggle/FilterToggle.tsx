@@ -3,16 +3,24 @@ import styles from './FilterToggle.module.css'
 interface FilterToggleProps {
 	expanded: boolean
 	onToggle: () => void
+	labelExpanded?: string
+	labelCollapsed?: string
 }
 
-export const FilterToggle = ({ expanded, onToggle }: FilterToggleProps) => {
+export const FilterToggle = ({
+	expanded,
+	onToggle,
+	labelExpanded = 'Скрыть',
+	labelCollapsed = 'Посмотреть все'
+}: FilterToggleProps) => {
 	return (
 		<button
-			onClick={onToggle}
 			type="button"
+			onClick={onToggle}
+			aria-expanded={expanded}
 			className={styles.button}
 		>
-			{expanded ? 'Скрыть' : 'Посмотреть все'}
+			{expanded ? labelExpanded : labelCollapsed}
 		</button>
 	)
 }

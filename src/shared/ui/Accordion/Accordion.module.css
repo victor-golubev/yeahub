@@ -1,0 +1,43 @@
+.accordion {
+	width: 100%;
+}
+
+.trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: var(--space-md) 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
+	gap: var(--space-md);
+}
+
+.title {
+	font-size: 1rem;
+	font-weight: 500;
+	color: var(--color-text);
+}
+
+.icon {
+	flex-shrink: 0;
+	width: 20px;
+	height: 20px;
+	transition: transform var(--transition-slow);
+}
+
+.iconOpen {
+	transform: rotate(180deg);
+}
+
+.content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height var(--transition-slow);
+}
+
+.contentOpen {
+	max-height: 500px;
+}

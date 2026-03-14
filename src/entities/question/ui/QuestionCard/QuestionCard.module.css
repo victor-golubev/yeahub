@@ -4,7 +4,7 @@
 	justify-content: center;
 	width: 100%;
 	border-radius: var(--radius-md);
-	padding: var(--space-md);
+	padding: var(--space-xxs) var(--space-md);
 	background: var(--color-white);
 	box-shadow: var(--shadow-sm);
 	transition: box-shadow var(--transition-normal);
@@ -98,6 +98,7 @@
 
 .text {
 	margin-top: var(--space-lg);
+	margin-bottom: var(--space-md);
 	line-height: 1.4;
 }
 
@@ -111,10 +112,6 @@
 }
 
 @media (min-width: 768px) {
-	.card {
-		padding: var(--space-md) var(--space-lg);
-	}
-
 	.title {
 		font-size: 1.2rem;
 	}

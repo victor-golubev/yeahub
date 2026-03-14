@@ -5,7 +5,7 @@ import { DEFAULT_SPECIALIZATION_ID } from '@/shared/constants/filters'
 import { PAGINATION_LIMIT } from '@/shared/constants/pagination'
 import { RATE_VALUES } from '@/shared/constants/rate'
 import { useAppDispatch, useAppSelector } from '@/shared/lib'
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 export const useQuestionFilters = () => {
@@ -17,8 +17,14 @@ export const useQuestionFilters = () => {
 		state => state.questionFilters.isMobileOpen
 	)
 
-	const toggleMobileFilters = () => dispatch(toggleFilters())
-	const closeMobileFilters = () => dispatch(closeFilters())
+	const toggleMobileFilters = useCallback(
+		() => dispatch(toggleFilters()),
+		[dispatch]
+	)
+	const closeMobileFilters = useCallback(
+		() => dispatch(closeFilters()),
+		[dispatch]
+	)
 
 	const filters = useMemo<QuestionFilters>(() => {
 		return {
@@ -97,24 +103,6 @@ export const useQuestionFilters = () => {
 	const resetFilters = useCallback(() => {
 		setSearchParams({})
 	}, [setSearchParams])
-
-	useEffect(() => {
-		try {
-			const hasPage = searchParams.has('page')
-			const hasSpec = searchParams.has('specialization')
-
-			if (!hasPage || !hasSpec) {
-				updateFilters({
-					page: hasPage ? Number(searchParams.get('page')) : 1,
-					specialization: hasSpec
-						? searchParams.get('specialization') || undefined
-						: DEFAULT_SPECIALIZATION_ID
-				})
-			}
-		} catch (error) {
-			console.error('Ошибка получения фильтров:', error)
-		}
-	}, [])
 
 	return {
 		filters,

@@ -1,14 +1,9 @@
-// widgets/header/ui/Header.tsx
 import { BurgerIcon } from '@/shared/assets/icons/BurgerIcon'
 import { ChevronDownIcon } from '@/shared/assets/icons/ChevronDownIcon'
-import logoIcon from '@/shared/assets/icons/logo-icon.png'
-import logoText from '@/shared/assets/icons/logo-text.svg'
 import { ProfileAddIcon } from '@/shared/assets/icons/ProfileAddIcon'
 import { ProfileIcon } from '@/shared/assets/icons/ProfileIcon'
 import { ROUTES } from '@/shared/config'
-import { Button } from '@/shared/ui/Button'
-import { Container } from '@/shared/ui/Container/Container'
-import { Drawer } from '@/shared/ui/Drawer/Drawer'
+import { Button, Container, Drawer, Logo } from '@/shared/ui'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import styles from './Header.module.css'
@@ -26,13 +21,13 @@ export const Header = () => {
 	const toggleProfileMenu = (e: React.MouseEvent) => {
 		e.stopPropagation()
 		setIsProfileMenuOpen(prev => !prev)
-		setIsPrepMenuOpen(false) // Закрываем другое меню
+		setIsPrepMenuOpen(false)
 	}
 
 	const togglePrepMenu = (e: React.MouseEvent) => {
 		e.stopPropagation()
 		setIsPrepMenuOpen(prev => !prev)
-		setIsProfileMenuOpen(false) // Закрываем другое меню
+		setIsProfileMenuOpen(false)
 	}
 
 	const closeAllMenus = () => {
@@ -45,20 +40,7 @@ export const Header = () => {
 			<Container>
 				<div className={styles.inner}>
 					<div className={styles.left}>
-						<Link
-							to="/questions"
-							className={styles.logo}
-							aria-label="На главную"
-						>
-							<img
-								src={logoIcon}
-								alt="Логотип"
-							/>
-							<img
-								src={logoText}
-								alt="YeaHub"
-							/>
-						</Link>
+						<Logo />
 
 						<nav
 							className={styles.nav}
@@ -68,16 +50,12 @@ export const Header = () => {
 								<NavLink
 									key={item.to}
 									to={item.to}
-									className={({ isActive }) =>
-										`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
-									}
 								>
 									{item.label}
 								</NavLink>
 							))}
 						</nav>
 
-						{/* Контейнер для позиционирования выпадашки подготовки */}
 						<div className={styles.prepWrapper}>
 							<button
 								className={styles.mobileNavTrigger}
@@ -93,6 +71,7 @@ export const Header = () => {
 								isOpen={isPrepMenuOpen}
 								onClose={closeAllMenus}
 								className={styles.prepDrawer}
+								lockScroll={false}
 							>
 								<nav className={styles.mobileNavList}>
 									{NAV_ITEMS.map(item => (
@@ -112,14 +91,14 @@ export const Header = () => {
 
 					<div className={styles.right}>
 						<Link
-							to="/login"
+							to={ROUTES.LOGIN}
 							className={styles.loginLink}
 						>
 							Вход
 						</Link>
 						<Button
 							as={Link}
-							to="/register"
+							to={ROUTES.REGISTER}
 							variant="primary"
 							className={styles.registerLink}
 						>
@@ -139,15 +118,15 @@ export const Header = () => {
 				</div>
 			</Container>
 
-			{/* Drawer только для профиля (бургер) */}
 			<Drawer
 				isOpen={isProfileMenuOpen}
 				onClose={closeAllMenus}
 				className={styles.mobileDrawer}
+				lockScroll={false}
 			>
 				<div className={styles.mobileMenuContent}>
 					<Link
-						to="/login"
+						to={ROUTES.LOGIN}
 						onClick={closeAllMenus}
 						className={styles.mobileDrawerLink}
 					>
@@ -157,7 +136,7 @@ export const Header = () => {
 						Вход
 					</Link>
 					<Link
-						to="/register"
+						to={ROUTES.REGISTER}
 						onClick={closeAllMenus}
 						className={styles.mobileDrawerLink}
 					>

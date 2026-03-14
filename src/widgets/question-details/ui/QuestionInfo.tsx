@@ -1,4 +1,5 @@
 import type { Skill } from '@/entities/skill'
+import { ROUTES } from '@/shared/config'
 import { Link } from 'react-router-dom'
 import styles from './QuestionInfo.module.css'
 
@@ -40,7 +41,7 @@ export const QuestionInfo = ({ complexity, rate, skills, keywords }: Props) => {
 								className={styles.item}
 							>
 								<Link
-									to={`/questions?page=1&skills=${skill.id}`}
+									to={ROUTES.QUESTIONS_BY_SKILL(skill.id)}
 									className={styles.skill}
 								>
 									{skill.imageSrc && (
@@ -64,7 +65,7 @@ export const QuestionInfo = ({ complexity, rate, skills, keywords }: Props) => {
 						{keywords.map(keyword => (
 							<li key={keyword}>
 								<Link
-									to={`/questions?page=1&keywords=${keyword}`}
+									to={ROUTES.QUESTIONS_BY_KEYWORD(keyword)}
 									className={styles.keyword}
 								>
 									#{keyword}

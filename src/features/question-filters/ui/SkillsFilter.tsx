@@ -1,10 +1,7 @@
 import { useGetSkillsQuery } from '@/entities/skill'
-import { Chip } from '@/shared/ui/Chip/Chip'
-import { FilterSection } from '@/shared/ui/FilterSection/FilterSection'
-import { FilterToggle } from '@/shared/ui/FilterToggle/FilterToggle'
+import { FILTER_VISIBLE_COUNT } from '@/shared/constants'
+import { Chip, FilterSection, FilterToggle, Skeleton } from '@/shared/ui'
 import { useState } from 'react'
-
-const VISIBLE_COUNT = 5
 
 interface SkillsFilterProps {
 	value?: number[]
@@ -24,7 +21,9 @@ export const SkillsFilter = ({
 
 	const [expanded, setExpanded] = useState(false)
 
-	const visibleSkills = expanded ? skills : skills?.slice(0, VISIBLE_COUNT)
+	const visibleSkills = expanded
+		? skills
+		: skills?.slice(0, FILTER_VISIBLE_COUNT)
 
 	const handleToggle = (id: number) => {
 		if (value.includes(id)) {
@@ -34,14 +33,25 @@ export const SkillsFilter = ({
 		}
 	}
 
-	if (isLoading) return <div>Загрузка...</div>
+	if (isLoading)
+		return (
+			<FilterSection title="Выберите навыки">
+				{Array.from({ length: FILTER_VISIBLE_COUNT }).map((_, i) => (
+					<Skeleton
+						key={i}
+						height="36px"
+					/>
+				))}
+			</FilterSection>
+		)
+
 	if (!skills?.length) return null
 
 	return (
 		<FilterSection
 			title="Выберите навыки"
 			footer={
-				skills.length > VISIBLE_COUNT && (
+				skills.length > FILTER_VISIBLE_COUNT && (
 					<FilterToggle
 						expanded={expanded}
 						onToggle={() => setExpanded(prev => !prev)}

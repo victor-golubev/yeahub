@@ -1,7 +1,7 @@
 import { QuestionDetailsPageSkeleton } from '@/pages/question-details'
 import { QuestionsPageSkeleton } from '@/pages/questions-list'
 import { ROUTES } from '@/shared/config'
-import { PageError } from '@/shared/ui/errors/PageError'
+import { PageError } from '@/shared/ui'
 import { BaseLayout } from '@/app/layouts/BaseLayout'
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'

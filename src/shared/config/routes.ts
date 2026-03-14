@@ -5,5 +5,9 @@ export const ROUTES = {
 	TRAINER: '/trainer',
 	MATERIALS: '/materials',
 	LOGIN: '/login',
-	REGISTER: '/register'
+	REGISTER: '/register',
+	QUESTIONS_BY_SKILL: (skillId: number) =>
+		`/questions?page=1&skills=${skillId}`,
+	QUESTIONS_BY_KEYWORD: (keyword: string) =>
+		`/questions?page=1&keywords=${keyword}`
 } as const

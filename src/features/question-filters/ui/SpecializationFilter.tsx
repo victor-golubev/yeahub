@@ -2,12 +2,9 @@ import {
 	useGetSpecializationsQuery,
 	type Specialization
 } from '@/entities/specialization'
-import { Chip } from '@/shared/ui/Chip/Chip'
-import { FilterSection } from '@/shared/ui/FilterSection/FilterSection'
-import { FilterToggle } from '@/shared/ui/FilterToggle/FilterToggle'
+import { FILTER_VISIBLE_COUNT } from '@/shared/constants'
+import { Chip, FilterSection, FilterToggle, Skeleton } from '@/shared/ui'
 import { useState } from 'react'
-
-const VISIBLE_COUNT = 5
 
 interface SpecializationFilterProps {
 	value?: string
@@ -26,16 +23,27 @@ export const SpecializationFilter = ({
 
 	const visibleSpecializations = expanded
 		? specializations
-		: specializations?.slice(0, VISIBLE_COUNT)
+		: specializations?.slice(0, FILTER_VISIBLE_COUNT)
 
-	if (isLoading) return <div>Загрузка...</div>
+	if (isLoading)
+		return (
+			<FilterSection title="Специализация">
+				{Array.from({ length: FILTER_VISIBLE_COUNT }).map((_, i) => (
+					<Skeleton
+						key={i}
+						height="36px"
+					/>
+				))}
+			</FilterSection>
+		)
+
 	if (!specializations.length) return null
 
 	return (
 		<FilterSection
 			title="Специализация"
 			footer={
-				specializations.length > VISIBLE_COUNT && (
+				specializations.length > FILTER_VISIBLE_COUNT && (
 					<FilterToggle
 						expanded={expanded}
 						onToggle={() => setExpanded(prev => !prev)}

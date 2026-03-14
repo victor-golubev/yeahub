@@ -1,3 +1,5 @@
+export type ComplexityLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+
 export const COMPLEXITY_RANGES = [
 	{ label: '1-3', values: [1, 2, 3] as const },
 	{ label: '4-6', values: [4, 5, 6] as const },

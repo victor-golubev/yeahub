@@ -1,5 +1,5 @@
-import type { Specialization } from '@/entities/question'
 import { baseApi } from '@/shared/api/baseApi'
+import type { Specialization } from '../model/types'
 
 interface getSpecializationResponse {
 	data: Specialization[]

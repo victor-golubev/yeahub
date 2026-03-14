@@ -1,5 +1,5 @@
 import noResultsIcon from '@/shared/assets/images/no-results.png'
-import { Button } from '@/shared/ui/Button'
+import { Button } from '@/shared/ui'
 import styles from './NoResults.module.css'
 
 interface NoResultsProps {
@@ -17,8 +17,6 @@ export const NoResults = ({ onResetFilters }: NoResultsProps) => {
 			<p>К сожалению, по запросу ничего не найдено.</p>
 			<p>Попробуйте изменить запрос или воспользуйтесь нашими категориями.</p>
 			<Button
-				as={'button'}
-				to="/register"
 				variant="secondary"
 				className={styles.reset}
 				onClick={onResetFilters}

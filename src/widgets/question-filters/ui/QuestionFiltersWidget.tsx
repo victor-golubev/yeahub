@@ -1,11 +1,11 @@
 import {
 	ComplexityFilter,
 	RateFilter,
-	SearchInput,
 	SkillsFilter,
 	SpecializationFilter,
 	useQuestionFilters
 } from '@/features/question-filters'
+import { SearchInput } from '@/shared/ui'
 import { useQuestionFiltersData } from '../lib/useQuestionFiltersData'
 import styles from './QuestionFiltersWidget.module.css'
 import { QuestionFiltersWidgetSkeleton } from './QuestionFiltersWidgetSkeleton'

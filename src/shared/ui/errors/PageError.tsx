@@ -1,6 +1,4 @@
-import { Button } from '@/shared/ui/Button'
-import { Container } from '@/shared/ui/Container/Container'
-import { Surface } from '@/shared/ui/Surface/Surface'
+import { Button, Container, Surface } from '@/shared/ui'
 import { useNavigate } from 'react-router-dom'
 import styles from './PageError.module.css'
 

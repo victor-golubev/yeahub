@@ -1,6 +1,6 @@
 import { RATE_VALUES } from '@/shared/constants/rate'
-import { Chip } from '@/shared/ui/Chip/Chip'
-import { FilterSection } from '@/shared/ui/FilterSection/FilterSection'
+import { Chip } from '@/shared/ui'
+import { FilterSection } from '@/shared/ui'
 
 interface RateFilterProps {
 	value?: number[]

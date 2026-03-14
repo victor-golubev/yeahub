@@ -1,5 +1,5 @@
-import { Container } from '@/shared/ui/Container/Container'
-import { Surface } from '@/shared/ui/Surface/Surface'
+import { Container } from '@/shared/ui'
+import { Surface } from '@/shared/ui'
 import { QuestionFiltersWidgetSkeleton } from '@/widgets/question-filters/ui/QuestionFiltersWidgetSkeleton'
 import { QuestionsListWidgetSkeleton } from '@/widgets/questions-list/ui/QuestionsListWidgetSkeleton'
 import styles from './QuestionsPageSkeleton.module.css'

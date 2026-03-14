@@ -1,4 +1,4 @@
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton'
+import { Skeleton } from '@/shared/ui'
 import styles from './QuestionsListWidgetSkeleton.module.css'
 
 export const QuestionsListWidgetSkeleton = () => {

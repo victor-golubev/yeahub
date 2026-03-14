@@ -1,4 +1,5 @@
 import { SearchIcon } from '@/shared/assets/icons/SearchIcon'
+import { useDebounce } from '@/shared/lib/hooks/useDebounce'
 import { useEffect, useRef, useState } from 'react'
 import styles from './SearchInput.module.css'
 
@@ -21,19 +22,18 @@ export const SearchInput = ({
 	const handleWrapperClick = () => {
 		inputRef.current?.focus()
 	}
+
 	useEffect(() => {
 		setLocalValue(value)
 	}, [value])
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			if (localValue !== value) {
-				onSearch(localValue)
-			}
-		}, debounceMs)
+	const debouncedValue = useDebounce(localValue, debounceMs)
 
-		return () => clearTimeout(timer)
-	}, [localValue, value, onSearch, debounceMs])
+	useEffect(() => {
+		if (debouncedValue !== value) {
+			onSearch(debouncedValue)
+		}
+	}, [debouncedValue, value, onSearch])
 
 	return (
 		<div

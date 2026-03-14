@@ -38,6 +38,12 @@
 	background-color: var(--color-link-hover);
 }
 
+.chip--disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
 .icon {
 	width: calc(var(--space-md) * 1.25);
 	height: calc(var(--space-md) * 1.25);

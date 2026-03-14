@@ -1,4 +1,4 @@
-import { Container } from '@/shared/ui/Container/Container'
+import { Container } from '@/shared/ui'
 import logoIcon from '../assets/footer-logo.svg'
 import figmaIcon from '../assets/social/figma.svg'
 import githubIcon from '../assets/social/github.svg'
