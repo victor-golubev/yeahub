@@ -1,13 +1,16 @@
-import { useQuestionFilters } from '@/features/question-filters'
-import { Container } from '@/shared/ui'
-import { SidePanel } from '@/shared/ui'
-import { Surface } from '@/shared/ui'
+import { closeFilters } from '@/features/question-filters'
+import { useAppDispatch, useAppSelector } from '@/shared/lib'
+import { Container, SidePanel, Surface } from '@/shared/ui'
 import { QuestionFiltersWidget } from '@/widgets/question-filters'
 import { QuestionsListWidget } from '@/widgets/questions-list'
 import styles from './QuestionsPage.module.css'
 
 export const QuestionsPage = () => {
-	const { isMobileOpen, closeMobileFilters } = useQuestionFilters()
+	const dispatch = useAppDispatch()
+	const isMobileOpen = useAppSelector(
+		state => state.questionFilters.isMobileOpen
+	)
+	const closeMobileFilters = () => dispatch(closeFilters())
 
 	return (
 		<Container>

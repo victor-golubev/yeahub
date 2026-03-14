@@ -23,13 +23,20 @@ export const SearchInput = ({
 		inputRef.current?.focus()
 	}
 
+	const debouncedValue = useDebounce(localValue, debounceMs)
+
+	const isExternalUpdate = useRef(false)
+
 	useEffect(() => {
+		isExternalUpdate.current = true
 		setLocalValue(value)
 	}, [value])
 
-	const debouncedValue = useDebounce(localValue, debounceMs)
-
 	useEffect(() => {
+		if (isExternalUpdate.current) {
+			isExternalUpdate.current = false
+			return
+		}
 		if (debouncedValue !== value) {
 			onSearch(debouncedValue)
 		}
@@ -53,7 +60,8 @@ export const SearchInput = ({
 			/>
 			{localValue && (
 				<button
-					onClick={() => {
+					onClick={e => {
+						e.stopPropagation()
 						setLocalValue('')
 						onSearch('')
 					}}

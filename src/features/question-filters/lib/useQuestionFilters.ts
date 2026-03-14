@@ -101,7 +101,7 @@ export const useQuestionFilters = () => {
 	)
 
 	const resetFilters = useCallback(() => {
-		setSearchParams({})
+		setSearchParams({ specialization: DEFAULT_SPECIALIZATION_ID })
 	}, [setSearchParams])
 
 	return {
