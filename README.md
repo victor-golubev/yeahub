@@ -4,7 +4,7 @@
 
 ## Демо
 
-> 🔗 [yeahub.vercel.app](https://yeahub-k7awjbtdc-gollubeffs-projects.vercel.app/questions)
+> 🔗 [yeahub.vercel.app](https://yeahub-hazel.vercel.app/questions)
 
 ---
 
