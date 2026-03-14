@@ -37,7 +37,7 @@ export const questionApi = baseApi.injectEndpoints({
 
 		getQuestionById: build.query<Question, string>({
 			query: id => `/questions/public-questions/${id}`,
-			providesTags: (result, error, id) => [{ type: 'Questions', id }]
+			providesTags: (_result, _error, id) => [{ type: 'Questions', id }]
 		})
 	})
 })

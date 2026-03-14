@@ -38,7 +38,7 @@ export class ErrorBoundary extends Component<Props, State> {
 						Перезагрузить страницу
 					</button>
 
-					{process.env.NODE_ENV === 'development' && this.state.error && (
+					{import.meta.env.DEV && this.state.error && (
 						<details style={{ marginTop: '1rem' }}>
 							<summary>Детали ошибки (dev only)</summary>
 							<pre style={{ whiteSpace: 'pre-wrap' }}>

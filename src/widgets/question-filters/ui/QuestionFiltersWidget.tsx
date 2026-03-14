@@ -13,7 +13,7 @@ import { QuestionFiltersWidgetSkeleton } from './QuestionFiltersWidgetSkeleton'
 export const QuestionFiltersWidget = () => {
 	const { filters, updateFilters } = useQuestionFilters()
 
-	const { specializations, skills, isLoading } = useQuestionFiltersData({
+	const { isLoading } = useQuestionFiltersData({
 		specialization: filters.specialization
 	})
 
